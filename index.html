@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informe de la Biblioteca de la Universidad de Montemorelos 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root{
+  --bg:#f4f1ea;--surf:#faf8f4;--surf2:#ece8de;
+  --ink:#1a1714;--ink2:#56514c;--ink3:#9a948f;
+  --a1:#2d5a3d;--a2:#8b3a1a;--a3:#1d3a5c;--a4:#b8860b;--a5:#5a3a6e;--a6:#5a5450;
+  --p1:#2d5a3d;--p2:#1d3a5c;--p3:#8b3a1a;--p4:#5a3a6e;
+  --brd:rgba(26,23,20,.10);--r:6px;--rl:10px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.6}
+
+.mhead{background:var(--ink);color:#f4f1ea;padding:3rem 3rem 2.5rem;position:relative;overflow:hidden}
+.mhead::before{content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 47px,rgba(255,255,255,.03) 47px,rgba(255,255,255,.03) 48px),
+             repeating-linear-gradient(90deg,transparent,transparent 47px,rgba(255,255,255,.03) 47px,rgba(255,255,255,.03) 48px)}
+.mhi{position:relative;max-width:1200px;margin:0 auto}
+.eye{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,241,234,.4);margin-bottom:1rem}
+.mhead h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.3rem);font-weight:700;line-height:1.08;color:#f4f1ea;margin-bottom:.5rem}
+.msub{font-size:14px;color:rgba(244,241,234,.5);max-width:600px;margin-bottom:2rem;line-height:1.6}
+.mmeta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem}
+.mi .ml{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,241,234,.36);margin-bottom:3px}
+.mi .mv{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:#f4f1ea;line-height:1}
+.mi .mv small{font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:400;color:rgba(244,241,234,.42);margin-left:5px}
+
+.timeline{display:grid;grid-template-columns:36.3fr 14.7fr 45.6fr 1.5fr;gap:0;margin-bottom:2rem;border-radius:var(--rl);overflow:hidden;border:1px solid var(--brd);min-height:88px}
+.tb{padding:1rem 1.1rem;position:relative;cursor:default}
+.tb-1{background:rgba(45,90,61,.13)}
+.tb-2{background:rgba(29,58,92,.13);border-left:1px solid var(--brd)}
+.tb-3{background:rgba(139,58,26,.13);border-left:1px solid var(--brd)}
+.tb-4{background:rgba(90,58,110,.13);border-left:1px solid var(--brd)}
+.tb-lbl{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.11em;text-transform:uppercase;margin-bottom:2px}
+.tb-1 .tb-lbl{color:var(--p1)}.tb-2 .tb-lbl{color:var(--p2)}.tb-3 .tb-lbl{color:var(--p3)}.tb-4 .tb-lbl{color:var(--p4)}
+.tb-dates{font-size:11px;font-weight:500;color:var(--ink);margin-bottom:4px}
+.tb-n{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;line-height:1}
+.tb-1 .tb-n{color:var(--p1)}.tb-2 .tb-n{color:var(--p2)}.tb-3 .tb-n{color:var(--p3)}.tb-4 .tb-n{color:var(--p4)}
+.tb-s{font-size:10px;color:var(--ink3);margin-top:2px}
+@media(max-width:760px){.timeline{grid-template-columns:1fr 1fr}.tb{border-left:none!important;border-bottom:1px solid var(--brd)}}
+
+.snav{position:sticky;top:0;z-index:100;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.07)}
+.ni{max-width:1200px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none}
+.ni::-webkit-scrollbar{display:none}
+.nt{padding:.85rem 1.1rem;font-size:10.5px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:rgba(244,241,234,.38);cursor:pointer;border:none;background:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color .18s,border-color .18s;font-family:'DM Sans',sans-serif}
+.nt:hover{color:rgba(244,241,234,.75)}
+.nt.active{color:#f4f1ea;border-bottom-color:var(--a4)}
+
+.wrap{max-width:1200px;margin:0 auto;padding:2.5rem 2rem}
+.sec{display:none}
+.sec.active{display:block}
+.sh{display:flex;align-items:baseline;gap:1rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--brd)}
+.sh h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700}
+.stag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+
+.kstrip{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--brd);border:1px solid var(--brd);border-radius:var(--rl);overflow:hidden;margin-bottom:2rem}
+.kc{background:var(--surf);padding:1.1rem 1.3rem}
+.kl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:5px}
+.kn{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;line-height:1;color:var(--ink)}
+.kd{font-size:11px;color:var(--ink3);margin-top:3px}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.gf{margin-bottom:1.5rem}
+@media(max-width:900px){.g3{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.g2,.g3{grid-template-columns:1fr}}
+
+.card{background:var(--surf);border:1px solid var(--brd);border-radius:var(--rl);padding:1.5rem}
+.cl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:.3rem}
+.ct{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--ink)}
+.cw{position:relative}
+.leg{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:.75rem;font-size:11px;color:var(--ink2)}
+.ld{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle}
+
+.pcard{border-radius:var(--rl);padding:1.5rem;margin-bottom:1.5rem;border:1px solid var(--brd)}
+.pcard-1{background:rgba(45,90,61,.06);border-left:4px solid var(--p1)}
+.pcard-2{background:rgba(29,58,92,.06);border-left:4px solid var(--p2)}
+.pcard-3{background:rgba(139,58,26,.06);border-left:4px solid var(--p3)}
+.pcard-4{background:rgba(90,58,110,.06);border-left:4px solid var(--p4)}
+.pcard-hd{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;flex-wrap:wrap}
+.ppill{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:20px;font-weight:500;white-space:nowrap}
+.pp1{background:rgba(45,90,61,.15);color:var(--p1)}
+.pp2{background:rgba(29,58,92,.15);color:var(--p2)}
+.pp3{background:rgba(139,58,26,.15);color:var(--p3)}
+.pp4{background:rgba(90,58,110,.15);color:var(--p4)}
+.pcard h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink)}
+.pdates{font-size:11.5px;color:var(--ink3);font-family:'DM Mono',monospace}
+
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:1px;background:rgba(26,23,20,.07);border-radius:var(--r);overflow:hidden;margin-bottom:1.25rem}
+.mg{background:var(--surf);padding:.8rem .9rem}
+.mgl{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:3px}
+.mgn{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;line-height:1}
+.mgs{font-size:10px;color:var(--ink3);margin-top:2px}
+
+.triple{width:100%;border-collapse:collapse;font-size:12.5px}
+.triple th{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:.5rem .75rem .65rem;border-bottom:1px solid var(--brd);text-align:right}
+.triple th:first-child{text-align:left}
+.triple td{padding:.6rem .75rem;border-bottom:1px solid rgba(26,23,20,.05);vertical-align:middle;text-align:right}
+.triple td:first-child{text-align:left}
+.triple tr:last-child td{border-bottom:none;font-weight:500;background:rgba(26,23,20,.025)}
+.bnum{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700}
+.mono{font-family:'DM Mono',monospace;font-size:11px}
+.op-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+
+.tt{width:100%;border-collapse:collapse;font-size:12px}
+.tt th{text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);padding:0 .75rem .75rem;border-bottom:1px solid var(--brd)}
+.tt td{padding:.55rem .75rem;border-bottom:1px solid rgba(26,23,20,.05);vertical-align:middle}
+.tt tr:last-child td{border-bottom:none}
+.tt tr:hover td{background:rgba(26,23,20,.02)}
+.rb{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--surf2);font-family:'DM Mono',monospace;font-size:9px;color:var(--ink2)}
+.rb.g{background:var(--a4);color:#fff}.rb.s{background:#888;color:#fff}.rb.b{background:var(--a2);color:#fff}
+.bi{display:inline-block;height:5px;border-radius:3px;vertical-align:middle;margin-left:6px}
+
+.ins{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1.5rem}
+.in{background:var(--surf);border:1px solid var(--brd);border-left:3px solid var(--a4);border-radius:var(--rl);padding:1rem 1.2rem}
+.it{font-weight:500;font-size:12.5px;margin-bottom:.2rem}
+.ix{font-size:12px;color:var(--ink2);line-height:1.55}
+
+.callout{background:linear-gradient(135deg,var(--ink) 0%,#2a3a2a 100%);color:#f4f1ea;border-radius:var(--rl);padding:1.8rem 2.2rem;margin-bottom:2rem}
+.callout h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:.6rem}
+.callout p{font-size:13px;color:rgba(244,241,234,.65);line-height:1.7}
+.callout strong{color:#f4f1ea}
+
+.callout-blue{background:linear-gradient(135deg,#1d3a5c 0%,#2a3a4a 100%);color:#f4f1ea;border-radius:var(--rl);padding:1.8rem 2.2rem;margin-bottom:1.5rem}
+.callout-blue h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:.6rem;color:#f4f1ea}
+.callout-blue p{font-size:13px;color:rgba(244,241,234,.72);line-height:1.7;margin-bottom:.5rem}
+.callout-blue p:last-child{margin-bottom:0}
+.callout-blue strong{color:#f4f1ea}
+
+.callout-amber{background:linear-gradient(135deg,#5a3a00 0%,#3a2800 100%);color:#f4f1ea;border-radius:var(--rl);padding:1.8rem 2.2rem;margin-bottom:1.5rem}
+.callout-amber h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:.6rem;color:#f4f1ea}
+.callout-amber p{font-size:13px;color:rgba(244,241,234,.72);line-height:1.7;margin-bottom:.5rem}
+.callout-amber strong{color:#f4f1ea}
+
+.metodo{background:var(--surf);border:1px solid var(--brd);border-radius:var(--rl);padding:1.8rem 2rem;margin-bottom:1.5rem}
+.metodo h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:.9rem;padding-bottom:.7rem;border-bottom:1px solid var(--brd)}
+.metodo p{font-size:13px;color:var(--ink2);line-height:1.78;margin-bottom:.75rem}
+.metodo p:last-child{margin-bottom:0}
+.metodo strong{color:var(--ink);font-weight:500}
+.formula{background:var(--surf2);border-radius:var(--r);padding:.7rem 1rem;margin:.4rem 0 .7rem;font-family:'DM Mono',monospace;font-size:11.5px;color:var(--ink2);border-left:3px solid var(--a4)}
+
+.ind-table{width:100%;border-collapse:collapse;font-size:13px}
+.ind-table td{padding:.6rem 1rem;border-bottom:1px solid var(--brd)}
+.ind-table td:first-child{color:var(--ink2)}
+.ind-table td:last-child{font-weight:500;text-align:right;font-family:'DM Mono',monospace;font-size:11.5px}
+.ind-table tr:last-child td{border-bottom:none}
+
+/* Enroll stat */
+.enroll-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--brd);border:1px solid var(--brd);border-radius:var(--rl);overflow:hidden;margin-bottom:1.5rem}
+.en-cell{background:var(--surf);padding:1.1rem 1.3rem}
+.en-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.en-val{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;line-height:1}
+.en-sub{font-size:11px;color:var(--ink3);margin-top:3px}
+
+.period-tab-nav{display:flex;gap:4px;margin-bottom:1rem;flex-wrap:wrap}
+.ptab{padding:.45rem .9rem;font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border:1px solid var(--brd);background:var(--surf2);border-radius:20px;color:var(--ink2);transition:all .15s;font-family:'DM Mono',monospace}
+.ptab.act1{background:var(--p1);color:#fff;border-color:var(--p1)}
+.ptab.act2{background:var(--p2);color:#fff;border-color:var(--p2)}
+.ptab.act3{background:var(--p3);color:#fff;border-color:var(--p3)}
+.ptab.act4{background:var(--p4);color:#fff;border-color:var(--p4)}
+.ptab-content{display:none}
+.ptab-content.active{display:block}
+
+/* OP COLORS */
+.c-pres{color:var(--a1)}.c-renov{color:var(--a4)}.c-devol{color:var(--a2)}
+
+/* analysis box */
+.anabox{background:var(--surf2);border-radius:var(--rl);padding:1.4rem 1.6rem;margin-bottom:1rem;border-left:3px solid var(--a4)}
+.anabox h4{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;margin-bottom:.6rem;color:var(--ink)}
+.anabox p{font-size:12.5px;color:var(--ink2);line-height:1.7;margin-bottom:.4rem}
+.anabox p:last-child{margin-bottom:0}
+
+/* hora bars */
+.hbar-wrap{display:flex;flex-direction:column;gap:3px;margin-top:.5rem}
+.hbar-row{display:flex;align-items:center;gap:8px;font-size:10.5px}
+.hbar-lbl{font-family:'DM Mono',monospace;font-size:9.5px;width:30px;text-align:right;color:var(--ink3)}
+.hbar-track{flex:1;height:14px;background:rgba(26,23,20,.06);border-radius:3px;overflow:hidden}
+.hbar-fill{height:100%;border-radius:3px;transition:width .3s}
+.hbar-num{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--ink3);width:32px}
+</style>
+</head>
+<body>
+
+<header class="mhead">
+  <div class="mhi">
+    <div class="eye">Sistema de Biblioteca — Informe por Periodos Académicos 2025</div>
+    <h1>Informe de Servicios<br>Bibliotecarios 2025</h1>
+    <p class="msub">Análisis por los 4 periodos del ciclo escolar. Incluye préstamos, renovaciones y <strong style="color:#f4f1ea">devoluciones</strong> con promedios diarios según días atendidos reales, promedios por usuario y metodología de cálculo de tasas.</p>
+    <div class="mmeta">
+      <div class="mi"><div class="ml">Préstamos año</div><div class="mv">4,507</div></div>
+      <div class="mi"><div class="ml">Renovaciones año</div><div class="mv">2,554</div></div>
+      <div class="mi"><div class="ml">Devoluciones año</div><div class="mv">4,418</div></div>
+      <div class="mi"><div class="ml">Usuarios únicos</div><div class="mv">859</div></div>
+      <div class="mi"><div class="ml">Periodos</div><div class="mv">4</div></div>
+    </div>
+  </div>
+</header>
+
+<nav class="snav">
+  <div class="ni">
+    <button class="nt active" onclick="showTab('periodos',this)">Periodos académicos</button>
+    <button class="nt" onclick="showTab('promedios',this)">Promedios y tasas</button>
+    <button class="nt" onclick="showTab('comparativa',this)">Comparativa</button>
+    <button class="nt" onclick="showTab('usuarios',this)">Usuarios</button>
+    <button class="nt" onclick="showTab('temas',this)">Temas y títulos</button>
+    <button class="nt" onclick="showTab('escuelas',this)">Escuelas</button>
+    <button class="nt" onclick="showTab('horarios',this)">Horarios</button>
+    <button class="nt" onclick="showTab('metodologia',this)">Metodología</button>
+    <button class="nt" onclick="showTab('informe',this)">Informe</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ══════════ PERIODOS ══════════ -->
+<section id="sec-periodos" class="sec active">
+  <div class="sh"><h2>Periodos académicos 2025</h2><span class="stag">Préstamos · renovaciones · devoluciones</span></div>
+  <div class="timeline">
+    <div class="tb tb-1">
+      <div class="tb-lbl">2° Semestre ciclo escolar</div>
+      <div class="tb-dates">21 ene – 16 may 2025</div>
+      <div class="tb-n">2,564</div>
+      <div class="tb-s">tx en sistema · 36.3% del año</div>
+    </div>
+    <div class="tb tb-2">
+      <div class="tb-lbl">Verano</div>
+      <div class="tb-dates">17 may – 8 ago 2025</div>
+      <div class="tb-n">1,037</div>
+      <div class="tb-s">tx en sistema · 14.7%</div>
+    </div>
+    <div class="tb tb-3">
+      <div class="tb-lbl">1° Semestre ciclo escolar</div>
+      <div class="tb-dates">9 ago – 4 dic 2025</div>
+      <div class="tb-n">3,222</div>
+      <div class="tb-s">tx en sistema · 45.6%</div>
+    </div>
+    <div class="tb tb-4">
+      <div class="tb-lbl">Vacacional invierno</div>
+      <div class="tb-dates">5 – 31 dic 2025</div>
+      <div class="tb-n">108</div>
+      <div class="tb-s">tx en sistema · 1.5%</div>
+    </div>
+  </div>
+
+  <!-- PERIODO 1 -->
+  <div class="pcard pcard-1">
+    <div class="pcard-hd">
+      <span class="ppill pp1">2° Semestre ciclo escolar</span>
+      <h3>21 enero – 16 mayo 2025</h3>
+      <span class="pdates">95 días (préstamos/devol.) · 116 días (renovaciones)</span>
+    </div>
+    <div class="mgrid">
+      <div class="mg"><div class="mgl">Préstamos</div><div class="mgn c-pres">1,581</div><div class="mgs">61.7% del periodo</div></div>
+      <div class="mg"><div class="mgl">Renovaciones</div><div class="mgn c-renov">983</div><div class="mgs">38.3% del periodo</div></div>
+      <div class="mg"><div class="mgl">Devoluciones</div><div class="mgn c-devol">1,606</div><div class="mgs">101.6% de los préstamos</div></div>
+      <div class="mg"><div class="mgl">Usuarios únicos</div><div class="mgn">408</div><div class="mgs">IDs distintos</div></div>
+      <div class="mg"><div class="mgl">Tx / usuario</div><div class="mgn">6.28</div><div class="mgs">2,564 ÷ 408</div></div>
+      <div class="mg"><div class="mgl">Tasa renovación</div><div class="mgn">38.3%</div><div class="mgs">983 ÷ 2,564</div></div>
+    </div>
+    <table class="triple">
+      <thead>
+        <tr><th>Operación</th><th>Total</th><th>Días atendidos</th><th>Promedio diario</th><th>Usuarios únicos</th><th>Prom. / usuario</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="op-dot" style="background:var(--p1)"></span><strong>Préstamos</strong></td><td><span class="mono">1,581</span></td><td><span class="mono">95</span></td><td><span class="bnum c-pres">16.64</span></td><td><span class="mono">403</span></td><td><span class="bnum">3.92</span></td></tr>
+        <tr><td><span class="op-dot" style="background:var(--a4)"></span><strong>Renovaciones</strong></td><td><span class="mono">983</span></td><td><span class="mono">116</span></td><td><span class="bnum c-renov">8.47</span></td><td><span class="mono">218</span></td><td><span class="bnum">4.51</span></td></tr>
+        <tr><td><span class="op-dot" style="background:var(--a2)"></span><strong>Devoluciones</strong></td><td><span class="mono">1,606</span></td><td><span class="mono">95</span></td><td><span class="bnum c-devol">16.91</span></td><td><span class="mono">403 *</span></td><td><span class="bnum">3.99</span></td></tr>
+        <tr><td><strong>Total</strong></td><td><span class="mono">2,564</span></td><td>—</td><td>—</td><td><span class="mono"><strong>408</strong></span></td><td><span class="bnum">6.28</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--ink3);margin-top:.6rem">* Las devoluciones son procesadas por los mismos usuarios que prestaron. Se usa el mismo conteo de usuarios únicos de préstamos.</p>
+  </div>
+
+  <!-- PERIODO 2 -->
+  <div class="pcard pcard-2">
+    <div class="pcard-hd">
+      <span class="ppill pp2">Verano</span>
+      <h3>17 mayo – 8 agosto 2025</h3>
+      <span class="pdates">72 días (préstamos/devol.) · 84 días (renovaciones)</span>
+    </div>
+    <div class="mgrid">
+      <div class="mg"><div class="mgl">Préstamos</div><div class="mgn c-pres">826</div><div class="mgs">79.7% del periodo</div></div>
+      <div class="mg"><div class="mgl">Renovaciones</div><div class="mgn c-renov">211</div><div class="mgs">20.3% del periodo</div></div>
+      <div class="mg"><div class="mgl">Devoluciones</div><div class="mgn c-devol">764</div><div class="mgs">92.5% de los préstamos</div></div>
+      <div class="mg"><div class="mgl">Usuarios únicos</div><div class="mgn">168</div><div class="mgs">IDs distintos</div></div>
+      <div class="mg"><div class="mgl">Tx / usuario</div><div class="mgn">6.17</div><div class="mgs">1,037 ÷ 168</div></div>
+      <div class="mg"><div class="mgl">Tasa renovación</div><div class="mgn">20.3%</div><div class="mgs">211 ÷ 1,037</div></div>
+    </div>
+    <table class="triple">
+      <thead><tr><th>Operación</th><th>Total</th><th>Días atendidos</th><th>Promedio diario</th><th>Usuarios únicos</th><th>Prom. / usuario</th></tr></thead>
+      <tbody>
+        <tr><td><span class="op-dot" style="background:var(--p2)"></span><strong>Préstamos</strong></td><td><span class="mono">826</span></td><td><span class="mono">72</span></td><td><span class="bnum c-pres">11.47</span></td><td><span class="mono">164</span></td><td><span class="bnum">5.04</span></td></tr>
+        <tr><td><span class="op-dot" style="background:var(--a4)"></span><strong>Renovaciones</strong></td><td><span class="mono">211</span></td><td><span class="mono">84</span></td><td><span class="bnum c-renov">2.51</span></td><td><span class="mono">39</span></td><td><span class="bnum">5.41</span></td></tr>
+        <tr><td><span class="op-dot" style="background:var(--a2)"></span><strong>Devoluciones</strong></td><td><span class="mono">764</span></td><td><span class="mono">72</span></td><td><span class="bnum c-devol">10.61</span></td><td><span class="mono">164 *</span></td><td><span class="bnum">4.66</span></td></tr>
+        <tr><td><strong>Total</strong></td><td><span class="mono">1,037</span></td><td>—</td><td>—</td><td><span class="mono"><strong>168</strong></span></td><td><span class="bnum">6.17</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PERIODO 3 -->
+  <div class="pcard pcard-3">
+    <div class="pcard-hd">
+      <span class="ppill pp3">1° Semestre ciclo escolar</span>
+      <h3>9 agosto – 4 diciembre 2025</h3>
+      <span class="pdates">97 días (préstamos/devol.) · 115 días (renovaciones)</span>
+    </div>
+    <div class="mgrid">
+      <div class="mg"><div class="mgl">Préstamos</div><div class="mgn c-pres">1,931</div><div class="mgs">59.9% del periodo</div></div>
+      <div class="mg"><div class="mgl">Renovaciones</div><div class="mgn c-renov">1,291</div><div class="mgs">40.1% del periodo</div></div>
+      <div class="mg"><div class="mgl">Devoluciones</div><div class="mgn c-devol">1,946</div><div class="mgs">100.8% de los préstamos</div></div>
+      <div class="mg"><div class="mgl">Usuarios únicos</div><div class="mgn">532</div><div class="mgs">IDs distintos</div></div>
+      <div class="mg"><div class="mgl">Tx / usuario</div><div class="mgn">6.06</div><div class="mgs">3,222 ÷ 532</div></div>
+      <div class="mg"><div class="mgl">Tasa renovación</div><div class="mgn">40.1%</div><div class="mgs">1,291 ÷ 3,222</div></div>
+    </div>
+    <table class="triple">
+      <thead><tr><th>Operación</th><th>Total</th><th>Días atendidos</th><th>Promedio diario</th><th>Usuarios únicos</th><th>Prom. / usuario</th></tr></thead>
+      <tbody>
+        <tr><td><span class="op-dot" style="background:var(--p3)"></span><strong>Préstamos</strong></td><td><span class="mono">1,931</span></td><td><span class="mono">97</span></td><td><span class="bnum c-pres">19.91</span></td><td><span class="mono">527</span></td><td><span class="bnum">3.66</span></td></tr>
+        <tr><td><span class="op-dot" style="background:var(--a4)"></span><strong>Renovaciones</strong></td><td><span class="mono">1,291</span></td><td><span class="mono">115</span></td><td><span class="bnum c-renov">11.23</span></td><td><span class="mono">273</span></td><td><span class="bnum">4.73</span></td></tr>
+        <tr><td><span class="op-dot" style="background:var(--a2)"></span><strong>Devoluciones</strong></td><td><span class="mono">1,946</span></td><td><span class="mono">97</span></td><td><span class="bnum c-devol">20.06</span></td><td><span class="mono">527 *</span></td><td><span class="bnum">3.69</span></td></tr>
+        <tr><td><strong>Total</strong></td><td><span class="mono">3,222</span></td><td>—</td><td>—</td><td><span class="mono"><strong>532</strong></span></td><td><span class="bnum">6.06</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PERIODO 4 -->
+  <div class="pcard pcard-4">
+    <div class="pcard-hd">
+      <span class="ppill pp4">Vacacional invierno</span>
+      <h3>5 – 31 diciembre 2025</h3>
+      <span class="pdates">Docentes y alumnos de Preparación para el servicio</span>
+    </div>
+    <div class="mgrid">
+      <div class="mg"><div class="mgl">Préstamos</div><div class="mgn c-pres">65</div><div class="mgs">60.2% del periodo</div></div>
+      <div class="mg"><div class="mgl">Renovaciones</div><div class="mgn c-renov">43</div><div class="mgs">39.8% del periodo</div></div>
+      <div class="mg"><div class="mgl">Devoluciones</div><div class="mgn c-devol">102</div><div class="mgs">156.9% de los préstamos</div></div>
+      <div class="mg"><div class="mgl">Usuarios únicos</div><div class="mgn">30</div><div class="mgs">IDs distintos</div></div>
+      <div class="mg"><div class="mgl">Tx / usuario</div><div class="mgn">3.60</div><div class="mgs">108 ÷ 30</div></div>
+      <div class="mg"><div class="mgl">Tasa renovación</div><div class="mgn">39.8%</div><div class="mgs">43 ÷ 108</div></div>
+    </div>
+    <table class="triple">
+      <thead><tr><th>Operación</th><th>Total</th><th>Días atendidos</th><th>Promedio diario</th><th>Usuarios únicos</th><th>Prom. / usuario</th></tr></thead>
+      <tbody>
+        <tr><td><span class="op-dot" style="background:var(--p4)"></span><strong>Préstamos</strong></td><td><span class="mono">65</span></td><td class="mono" style="color:var(--ink3)">—</td><td class="mono" style="color:var(--ink3)">—</td><td><span class="mono">19</span></td><td><span class="bnum">3.42</span></td></tr>
+        <tr><td><span class="op-dot" style="background:var(--a4)"></span><strong>Renovaciones</strong></td><td><span class="mono">43</span></td><td class="mono" style="color:var(--ink3)">—</td><td class="mono" style="color:var(--ink3)">—</td><td><span class="mono">15</span></td><td><span class="bnum">2.87</span></td></tr>
+        <tr><td><span class="op-dot" style="background:var(--a2)"></span><strong>Devoluciones</strong></td><td><span class="mono">102</span></td><td class="mono" style="color:var(--ink3)">—</td><td class="mono" style="color:var(--ink3)">—</td><td class="mono" style="color:var(--ink3)">—</td><td class="mono" style="color:var(--ink3)">—</td></tr>
+        <tr><td><strong>Total</strong></td><td><span class="mono">108</span></td><td>—</td><td>—</td><td><span class="mono"><strong>30</strong></span></td><td><span class="bnum">3.60</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--ink3);margin-top:.6rem">* Sin registro de días atendidos para este periodo. Las devoluciones (102) superan los préstamos (65) porque incluyen devoluciones de materiales prestados antes del 5 de diciembre. Perfil: Docentes 42 tx, P. Apoyo 11 tx, Licenciatura 11 tx, Preparatoria 11 tx.</p>
+  </div>
+
+  <div class="ins">
+    <div class="in"><div class="it">1° Semestre: periodo más intenso</div><div class="ix">3,222 transacciones en sistema (45.6% del año). Prom. diario de préstamos: 19.91 — el más alto. Devoluciones (1,946) casi igualan a préstamos (1,931): ratio del 100.8%.</div></div>
+    <div class="in"><div class="it">Verano: devoluciones bajo el 100%</div><div class="ix">764 devoluciones vs. 826 préstamos (92.5%). Algunos materiales prestados en verano son devueltos ya en agosto, dentro del 1° semestre.</div></div>
+    <div class="in"><div class="it">Vacacional: devoluciones > préstamos</div><div class="ix">102 devoluciones vs. solo 65 préstamos (156.9%). Los usuarios que regresan al campus a trabajar devuelven materiales del semestre anterior antes de pedir nuevos.</div></div>
+    <div class="in"><div class="it">Total devoluciones año: 4,418</div><div class="ix">Frente a 4,507 préstamos anuales — un ratio del 98.0%. La diferencia de 89 materiales corresponde a préstamos con vigencia que cruzan el cierre del año.</div></div>
+  </div>
+</section>
+
+<!-- ══════════ PROMEDIOS Y TASAS ══════════ -->
+<section id="sec-promedios" class="sec">
+  <div class="sh"><h2>Promedios y tasas</h2><span class="stag">Diarios · por usuario · tasa de renovación</span></div>
+
+  <div class="callout">
+    <h3>Cómo se calculan los promedios diarios</h3>
+    <p>Los días atendidos provienen del <strong>registro operativo</strong> de la biblioteca — no de los días calendario del periodo. El promedio diario refleja la carga de trabajo real por día de servicio efectivo. Las renovaciones tienen <strong>más días atendidos</strong> que los préstamos porque el sistema permite renovar en días sin atención presencial (vía plataforma remota). Las devoluciones comparten los mismos días que los préstamos, ya que ambas operaciones requieren presencia física.</p>
+  </div>
+
+  <div class="card gf">
+    <div class="cl">Tabla maestra de indicadores</div>
+    <div class="ct">Todos los promedios y tasas por periodo y operación</div>
+    <div style="overflow-x:auto">
+    <table class="triple" style="min-width:750px">
+      <thead>
+        <tr>
+          <th style="text-align:left">Periodo</th><th>Total tx</th><th>Préstamos</th><th>Renov.</th><th>Devol.</th>
+          <th>Tasa renov.</th><th>P/día</th><th>R/día</th><th>D/día</th><th>Usuarios</th><th>Tx/user</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="op-dot" style="background:var(--p1)"></span>2° Semestre</td>
+          <td>2,564</td><td class="c-pres">1,581</td><td class="c-renov">983</td><td class="c-devol">1,606</td>
+          <td><strong>38.3%</strong></td>
+          <td><span class="bnum c-pres" style="font-size:.9rem">16.64</span></td>
+          <td><span class="bnum c-renov" style="font-size:.9rem">8.47</span></td>
+          <td><span class="bnum c-devol" style="font-size:.9rem">16.91</span></td>
+          <td>408</td><td><strong>6.28</strong></td>
+        </tr>
+        <tr>
+          <td><span class="op-dot" style="background:var(--p2)"></span>Verano</td>
+          <td>1,037</td><td class="c-pres">826</td><td class="c-renov">211</td><td class="c-devol">764</td>
+          <td><strong>20.3%</strong></td>
+          <td><span class="bnum c-pres" style="font-size:.9rem">11.47</span></td>
+          <td><span class="bnum c-renov" style="font-size:.9rem">2.51</span></td>
+          <td><span class="bnum c-devol" style="font-size:.9rem">10.61</span></td>
+          <td>168</td><td><strong>6.17</strong></td>
+        </tr>
+        <tr>
+          <td><span class="op-dot" style="background:var(--p3)"></span>1° Semestre</td>
+          <td>3,222</td><td class="c-pres">1,931</td><td class="c-renov">1,291</td><td class="c-devol">1,946</td>
+          <td><strong>40.1%</strong></td>
+          <td><span class="bnum c-pres" style="font-size:.9rem">19.91</span></td>
+          <td><span class="bnum c-renov" style="font-size:.9rem">11.23</span></td>
+          <td><span class="bnum c-devol" style="font-size:.9rem">20.06</span></td>
+          <td>532</td><td><strong>6.06</strong></td>
+        </tr>
+        <tr>
+          <td><span class="op-dot" style="background:var(--p4)"></span>Vacacional</td>
+          <td>108</td><td class="c-pres">65</td><td class="c-renov">43</td><td class="c-devol">102</td>
+          <td><strong>39.8%</strong></td>
+          <td style="color:var(--ink3)">—</td><td style="color:var(--ink3)">—</td><td style="color:var(--ink3)">—</td>
+          <td>30</td><td><strong>3.60</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Total año</strong></td>
+          <td><strong>7,061*</strong></td><td class="c-pres"><strong>4,507</strong></td>
+          <td class="c-renov"><strong>2,554</strong></td><td class="c-devol"><strong>4,418</strong></td>
+          <td><strong>36.2%</strong></td><td>—</td><td>—</td><td>—</td>
+          <td><strong>859</strong></td><td><strong>8.22</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:11px;color:var(--ink3);margin-top:.6rem">* 130 transacciones del 1–20 enero no pertenecen a ningún periodo académico definido y se incluyen solo en el total anual.</p>
+  </div>
+
+  <div class="g3">
+    <div class="card">
+      <div class="cl">Promedio diario de préstamos</div>
+      <div class="ct">Por día atendido (P)</div>
+      <div class="cw" style="height:200px"><canvas id="c-pd"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="cl">Promedio diario de renovaciones</div>
+      <div class="ct">Por día atendido (R)</div>
+      <div class="cw" style="height:200px"><canvas id="c-rd"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="cl">Promedio diario de devoluciones</div>
+      <div class="ct">Por día atendido (D)</div>
+      <div class="cw" style="height:200px"><canvas id="c-dd"></canvas></div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="cl">Tasa de renovación por periodo</div>
+      <div class="ct">Renovaciones ÷ total tx del periodo</div>
+      <div class="cw" style="height:200px"><canvas id="c-tasa"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="cl">Promedio de transacciones por usuario</div>
+      <div class="ct">Total tx ÷ usuarios únicos del periodo</div>
+      <div class="cw" style="height:200px"><canvas id="c-pusr"></canvas></div>
+    </div>
+  </div>
+
+  <div class="ins">
+    <div class="in"><div class="it">1° Semestre: máximo en las 3 operaciones</div><div class="ix">Mayor promedio diario en préstamos (19.91), renovaciones (11.23) y devoluciones (20.06). Es el periodo con mayor presión sobre la colección y el personal.</div></div>
+    <div class="in"><div class="it">Verano: renovaciones al mínimo (2.51/día)</div><div class="ix">Solo 2.51 renovaciones por día atendido — 4.5 veces menos que el 1° semestre. Los usuarios de verano hacen préstamos nuevos, no prolongan materiales anteriores.</div></div>
+    <div class="in"><div class="it">Tasa de renovación más alta: 1° Semestre 40.1%</div><div class="ix">Indica que en el periodo de mayor actividad, 4 de cada 10 transacciones son prolongaciones — señal de colección insuficiente en títulos clave de la temporada.</div></div>
+  </div>
+</section>
+
+<!-- ══════════ COMPARATIVA ══════════ -->
+<section id="sec-comparativa" class="sec">
+  <div class="sh"><h2>Comparativa entre periodos</h2><span class="stag">Operaciones · Categoría · Escuela · Facultad</span></div>
+
+  <!-- Gráfica general de las 3 operaciones -->
+  <div class="card gf">
+    <div class="cl">Las 3 operaciones por periodo</div>
+    <div class="ct">Préstamos, renovaciones y devoluciones en cada periodo académico</div>
+    <div class="leg">
+      <span><span class="ld" style="background:var(--a1)"></span>Préstamos</span>
+      <span><span class="ld" style="background:var(--a4)"></span>Renovaciones</span>
+      <span><span class="ld" style="background:var(--a2)"></span>Devoluciones</span>
+    </div>
+    <div class="cw" style="height:300px"><canvas id="c-triple-bar"></canvas></div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="cl">Composición de cada periodo (%)</div>
+      <div class="ct">Préstamos vs. renovaciones 100%</div>
+      <div class="cw" style="height:240px"><canvas id="c-comp-pr"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="cl">Distribución mensual por periodo</div>
+      <div class="ct">Cada mes coloreado según periodo académico</div>
+      <div class="cw" style="height:240px"><canvas id="c-comp-mes"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ── COMPARATIVA POR CATEGORÍA ── -->
+  <div class="sh" style="margin-top:2rem"><h2>Por categoría de usuario</h2><span class="stag">Préstamos · renovaciones por categoría y periodo</span></div>
+
+  <div class="card gf">
+    <div class="cl">Préstamos por categoría y periodo</div>
+    <div class="ct">Quién presta en cada periodo académico</div>
+    <div class="cw" style="height:310px"><canvas id="c-comp-cat"></canvas></div>
+  </div>
+
+  <div class="card gf">
+    <div class="cl">Renovaciones por categoría y periodo</div>
+    <div class="ct">Quién renueva en cada periodo académico</div>
+    <div class="cw" style="height:310px"><canvas id="c-renov-cat"></canvas></div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="cl">Promedio de libros prestados/usuario por categoría</div>
+      <div class="ct">2° Semestre</div>
+      <div class="cw" style="height:260px"><canvas id="c-avg-cat-2s"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="cl">Promedio de libros prestados/usuario por categoría</div>
+      <div class="ct">Verano</div>
+      <div class="cw" style="height:260px"><canvas id="c-avg-cat-v"></canvas></div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="cl">Promedio de libros prestados/usuario por categoría</div>
+      <div class="ct">1° Semestre</div>
+      <div class="cw" style="height:260px"><canvas id="c-avg-cat-1s"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="cl">Promedio de libros prestados/usuario por categoría</div>
+      <div class="ct">Vacacional</div>
+      <div class="cw" style="height:200px"><canvas id="c-avg-cat-vac"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ── COMPARATIVA POR ESCUELA ── -->
+  <div class="sh" style="margin-top:2rem"><h2>Por escuela</h2><span class="stag">Top escuelas por préstamos en cada periodo</span></div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="cl">Top 10 escuelas — Préstamos</div>
+      <div class="ct">2° Semestre (21 ene – 16 may)</div>
+      <div class="cw" style="height:310px"><canvas id="c-esc-2s"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="cl">Top 10 escuelas — Préstamos</div>
+      <div class="ct">Verano (17 may – 8 ago)</div>
+      <div class="cw" style="height:310px"><canvas id="c-esc-v"></canvas></div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="cl">Top 10 escuelas — Préstamos</div>
+      <div class="ct">1° Semestre (9 ago – 4 dic)</div>
+      <div class="cw" style="height:310px"><canvas id="c-esc-1s"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="cl">Top escuelas — Préstamos</div>
+      <div class="ct">Vacacional (5 – 31 dic)</div>
+      <div class="cw" style="height:250px"><canvas id="c-esc-vac"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ── COMPARATIVA POR FACULTAD ── -->
+  <div class="sh" style="margin-top:2rem"><h2>Por facultad</h2><span class="stag">Préstamos y renovaciones por facultad en cada periodo</span></div>
+
+  <div class="card gf">
+    <div class="cl">Préstamos por facultad y periodo</div>
+    <div class="ct">Cómo cambia la demanda entre periodos académicos</div>
+    <div class="cw" style="height:300px"><canvas id="c-fper"></canvas></div>
+  </div>
+
+  <div class="card gf">
+    <div class="cl">Renovaciones por facultad y periodo</div>
+    <div class="ct">Qué facultades prolongan más sus materiales</div>
+    <div class="cw" style="height:300px"><canvas id="c-fper-renov"></canvas></div>
+  </div>
+
+  <div class="card gf">
+    <div class="cl">Por facultad — comparativa préstamos vs. renovaciones</div>
+    <div class="ct">Anuales</div>
+    <div class="leg"><span><span class="ld" style="background:var(--a1)"></span>Préstamos</span><span><span class="ld" style="background:var(--a2)"></span>Renovaciones</span></div>
+    <div class="cw" style="height:340px"><canvas id="c-fcomp"></canvas></div>
+  </div>
+
+  <div class="ins">
+    <div class="in"><div class="it">Posgrado domina el verano (43.7% de préstamos)</div><div class="ix">361 de 826 préstamos de verano son de posgrado. En el 1° semestre solo tiene 20. El perfil de usuario cambia completamente entre periodos.</div></div>
+    <div class="in"><div class="it">Teología supera a Cs. Salud en verano</div><div class="ix">362 vs 174 préstamos. Los programas intensivos de posgrado en Teología concentran su actividad en el verano, invirtiéndose el orden del resto del año.</div></div>
+    <div class="in"><div class="it">1° Semestre: 532 usuarios únicos</div><div class="ix">El periodo más incluyente: 3.2× más usuarios que el verano (168) y 17.7× más que el vacacional (30). Refleja el regreso pleno de la comunidad universitaria.</div></div>
+    <div class="in"><div class="it">Cs. Jurídicas: mayor tasa de renovación</div><div class="ix">344 renovaciones vs 489 préstamos (70.3%) — la más alta por facultad. Los textos jurídicos se prolongan con frecuencia por su uso continuo durante todo el semestre.</div></div>
+  </div>
+</section>
+
+<!-- ══════════ USUARIOS ══════════ -->
+<section id="sec-usuarios" class="sec">
+  <div class="sh"><h2>Análisis de usuarios</h2><span class="stag">859 IDs únicos · cobertura · intensidad · distribución</span></div>
+
+  <!-- MATRÍCULA E INDICADORES -->
+  <div class="callout-blue">
+    <h3>Cobertura de la biblioteca respecto a la matrícula 2025</h3>
+    <p>El total de alumnos inscritos en modalidad <strong>presencial</strong> durante 2025 fue de <strong>4,603 alumnos</strong>. El total de usuarios únicos que utilizaron la biblioteca durante el año corresponde al <strong>18.66%</strong> de esa matrícula — es decir, aproximadamente 1 de cada 5 alumnos presenciales acudió a la biblioteca al menos una vez en el año.</p>
+    <p>El usuario con el registro de préstamo más antiguo en el sistema realizó su primera transacción a finales de <strong>2024</strong> y renovó ese material en <strong>2025</strong>, por lo que figura en la base de datos con 1 registro activo de préstamo del año anterior. De los 859 usuarios únicos contabilizados en 2025, ese caso representa el único préstamo de continuación interanual.</p>
+  </div>
+
+  <div class="enroll-grid">
+    <div class="en-cell"><div class="en-lbl">Total matriculados presencial</div><div class="en-val">4,603</div><div class="en-sub">Alumnos año 2025</div></div>
+    <div class="en-cell"><div class="en-lbl">Enero – Mayo</div><div class="en-val" style="color:var(--p1)">2,171</div><div class="en-sub">47.16% de la matrícula anual</div></div>
+    <div class="en-cell"><div class="en-lbl">Verano</div><div class="en-val" style="color:var(--p2)">177</div><div class="en-sub">3.85% de la matrícula anual</div></div>
+    <div class="en-cell"><div class="en-lbl">Agosto – Diciembre</div><div class="en-val" style="color:var(--p3)">2,255</div><div class="en-sub">48.99% de la matrícula anual</div></div>
+    <div class="en-cell"><div class="en-lbl">Usaron la biblioteca</div><div class="en-val" style="color:var(--a4)">859</div><div class="en-sub">18.66% del total presencial</div></div>
+  </div>
+
+  <!-- COBERTURA POR PERIODO -->
+  <div class="card gf">
+    <div class="cl">Cobertura biblioteca vs. matrícula por periodo</div>
+    <div class="ct">Alumnos inscritos vs. usuarios únicos que acudieron a la biblioteca</div>
+    <div class="cw" style="height:240px"><canvas id="c-cobertura"></canvas></div>
+  </div>
+
+  <!-- PROMEDIO POR USUARIO — EXPLICACIÓN -->
+  <div class="callout-amber">
+    <h3>¿Qué significa el promedio de transacciones por usuario?</h3>
+    <p>El <strong>promedio de transacciones por usuario</strong> indica cuántos libros, en promedio, <em>se llevó</em> una persona durante el periodo. En términos de circulación física, cada transacción de préstamo equivale a <strong>1 libro prestado</strong>; cada renovación, a prolongar el plazo de 1 libro ya en manos del usuario.</p>
+    <p><strong>Ejemplo:</strong> En el 1° Semestre, un alumno de licenciatura se llevó en promedio <strong>3.40 libros</strong> (préstamos) y prolongó el plazo de <strong>~4.2 de ellos</strong> si también renovó. Un docente se llevó en promedio <strong>5.44 libros</strong> — 60% más que un alumno de licenciatura — lo que refleja el uso intensivo de la colección para preparación de clases e investigación. El periodo vacacional muestra el promedio más bajo (3.60 tx/usuario total), ya que solo acude el personal que trabaja en el campus durante diciembre.</p>
+  </div>
+
+  <!-- MÉTRICAS GENERALES -->
+  <div class="kstrip">
+    <div class="kc"><div class="kl">Usuarios únicos año</div><div class="kn">859</div><div class="kd">IDs distintos en préstamos</div></div>
+    <div class="kc"><div class="kl">Prom. anual tx/usuario</div><div class="kn">8.22</div><div class="kd">Incluye préstamos + renov.</div></div>
+    <div class="kc"><div class="kl">Prom. libros docentes</div><div class="kn">10.24</div><div class="kd">85 docentes únicos</div></div>
+    <div class="kc"><div class="kl">Prom. libros licenciatura</div><div class="kn">4.45</div><div class="kd">617 alumnos únicos</div></div>
+    <div class="kc"><div class="kl">Prom. libros posgrado</div><div class="kn">5.47</div><div class="kd">76 alumnos únicos</div></div>
+    <div class="kc"><div class="kl">Prom. libros p. apoyo</div><div class="kn">7.58</div><div class="kd">43 personas únicas</div></div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="cl">Promedio libros prestados/usuario por categoría — anual</div>
+      <div class="ct">Intensidad de uso de la colección</div>
+      <div class="cw" style="height:260px"><canvas id="c-pcat"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="cl">Usuarios únicos por categoría — anual</div>
+      <div class="ct">IDs distintos en cada grupo</div>
+      <div class="cw" style="height:260px"><canvas id="c-uuni"></canvas></div>
+    </div>
+  </div>
+
+  <!-- USUARIOS ÚNICOS POR PERIODO Y CATEGORÍA -->
+  <div class="sh" style="margin-top:2rem"><h2>Usuarios únicos por periodo</h2><span class="stag">Categoría · Escuela · Facultad</span></div>
+
+  <div class="card gf">
+    <div class="cl">Usuarios únicos por periodo y categoría</div>
+    <div class="ct">Quién asiste a la biblioteca en cada periodo</div>
+    <div class="cw" style="height:310px"><canvas id="c-uper-cat"></canvas></div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="cl">Usuarios únicos por periodo y facultad</div>
+      <div class="ct">Distribución de usuarios que prestaron</div>
+      <div class="cw" style="height:320px"><canvas id="c-uper-fac"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="cl">Promedio libros/usuario por facultad y periodo</div>
+      <div class="ct">Intensidad de préstamo por facultad</div>
+      <div class="cw" style="height:320px"><canvas id="c-avg-fac-per"></canvas></div>
+    </div>
+  </div>
+
+  <!-- TABLAS DETALLADAS POR PERIODO -->
+  <div class="card gf">
+    <div class="cl">Análisis detallado por periodo — usuarios y libros</div>
+    <div class="ct">Usuarios únicos, préstamos totales y promedio de libros llevados por facultad</div>
+
+    <div class="period-tab-nav">
+      <button class="ptab act1" onclick="showPTab('pt-2s',this,1)">2° Semestre</button>
+      <button class="ptab" onclick="showPTab('pt-v',this,2)">Verano</button>
+      <button class="ptab" onclick="showPTab('pt-1s',this,3)">1° Semestre</button>
+      <button class="ptab" onclick="showPTab('pt-vac',this,4)">Vacacional</button>
+    </div>
+
+    <div id="pt-2s" class="ptab-content active">
+      <table class="tt">
+        <thead><tr><th>Facultad</th><th style="text-align:right">Usuarios únicos</th><th style="text-align:right">Préstamos</th><th style="text-align:right">Prom. libros/usuario</th></tr></thead>
+        <tbody>
+          <tr><td>Ciencias de la Salud</td><td style="text-align:right;font-family:'DM Mono',monospace">148</td><td style="text-align:right;font-family:'DM Mono',monospace">607</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">4.10</td></tr>
+          <tr><td>Ciencias Jurídicas</td><td style="text-align:right;font-family:'DM Mono',monospace">55</td><td style="text-align:right;font-family:'DM Mono',monospace">218</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">3.96</td></tr>
+          <tr><td>Teología</td><td style="text-align:right;font-family:'DM Mono',monospace">42</td><td style="text-align:right;font-family:'DM Mono',monospace">201</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">4.79</td></tr>
+          <tr><td>Artes y Comunicación</td><td style="text-align:right;font-family:'DM Mono',monospace">41</td><td style="text-align:right;font-family:'DM Mono',monospace">170</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">4.15</td></tr>
+          <tr><td>Personal de Apoyo</td><td style="text-align:right;font-family:'DM Mono',monospace">18</td><td style="text-align:right;font-family:'DM Mono',monospace">94</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">5.22</td></tr>
+          <tr><td>Ciencias de Educación</td><td style="text-align:right;font-family:'DM Mono',monospace">17</td><td style="text-align:right;font-family:'DM Mono',monospace">74</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">4.35</td></tr>
+          <tr><td>Psicología</td><td style="text-align:right;font-family:'DM Mono',monospace">27</td><td style="text-align:right;font-family:'DM Mono',monospace">73</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">2.70</td></tr>
+          <tr><td>Ciencias Estomatológicas</td><td style="text-align:right;font-family:'DM Mono',monospace">24</td><td style="text-align:right;font-family:'DM Mono',monospace">62</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">2.58</td></tr>
+          <tr><td>Preparatoria</td><td style="text-align:right;font-family:'DM Mono',monospace">11</td><td style="text-align:right;font-family:'DM Mono',monospace">39</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">3.55</td></tr>
+          <tr><td>Escuela de Música</td><td style="text-align:right;font-family:'DM Mono',monospace">13</td><td style="text-align:right;font-family:'DM Mono',monospace">28</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">2.15</td></tr>
+          <tr><td>Ingeniería y Tecnología</td><td style="text-align:right;font-family:'DM Mono',monospace">7</td><td style="text-align:right;font-family:'DM Mono',monospace">15</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">2.14</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="pt-v" class="ptab-content">
+      <table class="tt">
+        <thead><tr><th>Facultad</th><th style="text-align:right">Usuarios únicos</th><th style="text-align:right">Préstamos</th><th style="text-align:right">Prom. libros/usuario</th></tr></thead>
+        <tbody>
+          <tr><td>Teología</td><td style="text-align:right;font-family:'DM Mono',monospace">70</td><td style="text-align:right;font-family:'DM Mono',monospace">362</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">5.17</td></tr>
+          <tr><td>Ciencias de la Salud</td><td style="text-align:right;font-family:'DM Mono',monospace">30</td><td style="text-align:right;font-family:'DM Mono',monospace">174</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">5.80</td></tr>
+          <tr><td>Personal de Apoyo</td><td style="text-align:right;font-family:'DM Mono',monospace">20</td><td style="text-align:right;font-family:'DM Mono',monospace">98</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">4.90</td></tr>
+          <tr><td>Ciencias Jurídicas</td><td style="text-align:right;font-family:'DM Mono',monospace">10</td><td style="text-align:right;font-family:'DM Mono',monospace">64</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">6.40</td></tr>
+          <tr><td>Artes y Comunicación</td><td style="text-align:right;font-family:'DM Mono',monospace">7</td><td style="text-align:right;font-family:'DM Mono',monospace">46</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">6.57</td></tr>
+          <tr><td>Preparación para el servicio</td><td style="text-align:right;font-family:'DM Mono',monospace">4</td><td style="text-align:right;font-family:'DM Mono',monospace">19</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">4.75</td></tr>
+          <tr><td>Psicología</td><td style="text-align:right;font-family:'DM Mono',monospace">6</td><td style="text-align:right;font-family:'DM Mono',monospace">19</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">3.17</td></tr>
+          <tr><td>Ciencias de Educación</td><td style="text-align:right;font-family:'DM Mono',monospace">7</td><td style="text-align:right;font-family:'DM Mono',monospace">18</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">2.57</td></tr>
+          <tr><td>Ingeniería y Tecnología</td><td style="text-align:right;font-family:'DM Mono',monospace">3</td><td style="text-align:right;font-family:'DM Mono',monospace">10</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">3.33</td></tr>
+          <tr><td>Ciencias Estomatológicas</td><td style="text-align:right;font-family:'DM Mono',monospace">3</td><td style="text-align:right;font-family:'DM Mono',monospace">9</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">3.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="pt-1s" class="ptab-content">
+      <table class="tt">
+        <thead><tr><th>Facultad</th><th style="text-align:right">Usuarios únicos</th><th style="text-align:right">Préstamos</th><th style="text-align:right">Prom. libros/usuario</th></tr></thead>
+        <tbody>
+          <tr><td>Ciencias de la Salud</td><td style="text-align:right;font-family:'DM Mono',monospace">201</td><td style="text-align:right;font-family:'DM Mono',monospace">835</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">4.15</td></tr>
+          <tr><td>Artes y Comunicación</td><td style="text-align:right;font-family:'DM Mono',monospace">57</td><td style="text-align:right;font-family:'DM Mono',monospace">175</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">3.07</td></tr>
+          <tr><td>Ciencias Jurídicas</td><td style="text-align:right;font-family:'DM Mono',monospace">40</td><td style="text-align:right;font-family:'DM Mono',monospace">173</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">4.32</td></tr>
+          <tr><td>Teología</td><td style="text-align:right;font-family:'DM Mono',monospace">43</td><td style="text-align:right;font-family:'DM Mono',monospace">165</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">3.84</td></tr>
+          <tr><td>Ciencias Estomatológicas</td><td style="text-align:right;font-family:'DM Mono',monospace">41</td><td style="text-align:right;font-family:'DM Mono',monospace">136</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">3.32</td></tr>
+          <tr><td>Personal de Apoyo</td><td style="text-align:right;font-family:'DM Mono',monospace">29</td><td style="text-align:right;font-family:'DM Mono',monospace">113</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">3.90</td></tr>
+          <tr><td>Ciencias de Educación</td><td style="text-align:right;font-family:'DM Mono',monospace">39</td><td style="text-align:right;font-family:'DM Mono',monospace">110</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">2.82</td></tr>
+          <tr><td>Psicología</td><td style="text-align:right;font-family:'DM Mono',monospace">34</td><td style="text-align:right;font-family:'DM Mono',monospace">82</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">2.41</td></tr>
+          <tr><td>Preparatoria</td><td style="text-align:right;font-family:'DM Mono',monospace">13</td><td style="text-align:right;font-family:'DM Mono',monospace">47</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">3.62</td></tr>
+          <tr><td>Ingeniería y Tecnología</td><td style="text-align:right;font-family:'DM Mono',monospace">21</td><td style="text-align:right;font-family:'DM Mono',monospace">50</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">2.38</td></tr>
+          <tr><td>Preparación para el servicio</td><td style="text-align:right;font-family:'DM Mono',monospace">2</td><td style="text-align:right;font-family:'DM Mono',monospace">27</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">13.50</td></tr>
+          <tr><td>Escuela de Música</td><td style="text-align:right;font-family:'DM Mono',monospace">5</td><td style="text-align:right;font-family:'DM Mono',monospace">14</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">2.80</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="pt-vac" class="ptab-content">
+      <table class="tt">
+        <thead><tr><th>Facultad</th><th style="text-align:right">Usuarios únicos</th><th style="text-align:right">Préstamos</th><th style="text-align:right">Prom. libros/usuario</th></tr></thead>
+        <tbody>
+          <tr><td>Ciencias de la Salud</td><td style="text-align:right;font-family:'DM Mono',monospace">6</td><td style="text-align:right;font-family:'DM Mono',monospace">25</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">4.17</td></tr>
+          <tr><td>Personal de Apoyo</td><td style="text-align:right;font-family:'DM Mono',monospace">6</td><td style="text-align:right;font-family:'DM Mono',monospace">11</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">1.83</td></tr>
+          <tr><td>Ciencias Jurídicas</td><td style="text-align:right;font-family:'DM Mono',monospace">1</td><td style="text-align:right;font-family:'DM Mono',monospace">9</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">9.00</td></tr>
+          <tr><td>Ciencias de Educación</td><td style="text-align:right;font-family:'DM Mono',monospace">2</td><td style="text-align:right;font-family:'DM Mono',monospace">9</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">4.50</td></tr>
+          <tr><td>Artes y Comunicación</td><td style="text-align:right;font-family:'DM Mono',monospace">2</td><td style="text-align:right;font-family:'DM Mono',monospace">5</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">2.50</td></tr>
+          <tr><td>Ingeniería y Tecnología</td><td style="text-align:right;font-family:'DM Mono',monospace">1</td><td style="text-align:right;font-family:'DM Mono',monospace">5</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">5.00</td></tr>
+          <tr><td>Teología</td><td style="text-align:right;font-family:'DM Mono',monospace">1</td><td style="text-align:right;font-family:'DM Mono',monospace">1</td><td style="text-align:right;font-family:'Playfair Display',serif;font-weight:700">1.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card gf">
+    <div class="cl">Comportamiento de los 859 usuarios</div>
+    <div class="ct">Solo préstamos · ambas operaciones · solo renovaciones</div>
+    <div class="cw" style="height:180px"><canvas id="c-ubeh"></canvas></div>
+  </div>
+
+  <div class="ins">
+    <div class="in"><div class="it">Docentes: el doble de libros que licenciatura</div><div class="ix">Un docente se llevó en promedio 10.24 libros al año vs. 4.45 de un alumno de licenciatura. Esto refleja el uso de la colección para preparación de clase, investigación y actualización docente continua.</div></div>
+    <div class="in"><div class="it">1 de 5 alumnos presenciales usa la biblioteca</div><div class="ix">Del total de 4,603 alumnos presenciales, 859 utilizaron la biblioteca (18.66%). Existe un potencial de crecimiento significativo en la captación de nuevos usuarios, especialmente en los periodos de menor actividad.</div></div>
+    <div class="in"><div class="it">Verano: intensidad alta por pocos usuarios</div><div class="ix">168 usuarios únicos con 826 préstamos — 4.92 libros/usuario. Los estudiantes de posgrado llevan más libros que el promedio de licenciatura, impulsando el indicador a pesar del grupo reducido.</div></div>
+    <div class="in"><div class="it">Préstamo interanual: 1 usuario único</div><div class="ix">De los 859 usuarios únicos del 2025, solamente 1 realizó su préstamo a finales de 2024 y renovó en 2025. Este caso refleja el cruce natural del año académico con el calendario de préstamos activos.</div></div>
+  </div>
+</section>
+
+<!-- ══════════ TEMAS ══════════ -->
+<section id="sec-temas" class="sec">
+  <div class="sh"><h2>Temas y títulos</h2><span class="stag">Qué se lee y cómo varía por periodo</span></div>
+  <div class="g2">
+    <div class="card">
+      <div class="cl">Top 5 temas por periodo — préstamos</div>
+      <div class="ct">Religión lidera en todos los periodos</div>
+      <div class="cw" style="height:320px"><canvas id="c-tper"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="cl">Top 15 temas — préstamos anuales</div>
+      <div class="ct">Ranking general 2025</div>
+      <div class="cw" style="height:500px"><canvas id="c-tpres"></canvas></div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="cl">Top 15 temas — renovaciones anuales</div>
+      <div class="ct">Ranking general 2025</div>
+      <div class="cw" style="height:500px"><canvas id="c-tren"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="cl">Top 15 títulos más prestados</div>
+      <div class="ct">Ranking anual préstamos directos</div>
+      <div class="cw" style="height:500px"><canvas id="c-titulos"></canvas></div>
+    </div>
+  </div>
+  <div class="card gf">
+    <div class="cl">Ranking completo con renovaciones</div>
+    <div class="ct">Top 15 títulos — préstamos, renovaciones y total circulado</div>
+    <table class="tt">
+      <thead><tr><th>#</th><th>Título</th><th style="text-align:right">Préstamos</th><th style="text-align:right">Renovaciones</th><th style="text-align:right">Total</th><th style="width:100px"></th></tr></thead>
+      <tbody id="tb-tit"></tbody>
+    </table>
+  </div>
+
+  <!-- ══ ANÁLISIS DE COLECCIONES POR PERIODO ══ -->
+  <div class="sh" style="margin-top:2.5rem"><h2>Análisis del uso de colecciones por periodo</h2><span class="stag">2° Semestre · Verano · 1° Semestre</span></div>
+
+  <!-- 2° SEMESTRE -->
+  <div class="anabox" style="border-left-color:var(--p1)">
+    <h4>2° Semestre (21 enero – 16 mayo 2025) — 1,581 préstamos · 983 renovaciones</h4>
+    <p>La colección más demandada durante el 2° semestre es <strong>Religión (285 préstamos)</strong>, seguida de <strong>Administración y Contabilidad (183)</strong> y <strong>Psicología (116)</strong>. El tercer y cuarto lugar reflejan el perfil mixto de la comunidad universitaria en semestre regular: Ciencias de la Salud consume Anatomía humana (74 préstamos) y Bioquímica (51), mientras que las carreras de humanidades y sociales impulsan Arquitectura (61) y Derecho (61).</p>
+    <p>En renovaciones, el patrón cambia significativamente: <strong>Administración y Contabilidad lidera (126)</strong> por encima de Religión (110), lo que indica que los textos de gestión y contaduría son los que más se prolongan — señal de que hay pocos ejemplares disponibles frente a una demanda sostenida durante los 95 días del periodo. Anatomía humana (76 renovaciones) y Psicología (57) completan el cuadro de materiales de alta rotación.</p>
+    <p>Literatura (48 préstamos), Arte (49) y Colección Infantil (45) muestran presencia relevante, vinculada a las carreras de Artes y Comunicación y Ciencias de Educación que tienen su volumen principal en este semestre.</p>
+  </div>
+
+  <!-- VERANO -->
+  <div class="anabox" style="border-left-color:var(--p2)">
+    <h4>Verano (17 mayo – 8 agosto 2025) — 826 préstamos · 211 renovaciones</h4>
+    <p>El verano registra el cambio más drástico en el perfil de colección. <strong>Religión mantiene el primer lugar (284 préstamos)</strong>, explicado por los programas intensivos de posgrado en Teología que concentran su actividad en este periodo. Lo verdaderamente distintivo es el ascenso de la <strong>Colección Infantil al tercer lugar (73 préstamos)</strong>, vinculada a los cursos de licenciatura en Ciencias de Educación que forman maestros de nivel básico y tienen su práctica más concentrada en verano.</p>
+    <p>Administración y Contabilidad cae al segundo puesto (97), pero con una proporción mayor respecto a otros temas: sin los grandes grupos de Ciencias de la Salud del semestre regular, la colección de negocios gana peso relativo. Ciencias Sociales (40) y Literatura (36) siguen al bloque principal, típicamente asociados con programas de posgrado en educación y derecho.</p>
+    <p>Las renovaciones de verano son pocas (211) y las más concentradas: Administración (35) y Religión (34) suman el 33% del total — los estudiantes de posgrado que tomaron materiales al inicio del periodo los prolongan mientras continúan cursos intensivos. La Colección Infantil suma 19 renovaciones, inusualmente alta para ese segmento, confirmando el patrón pedagógico de las carreras educativas.</p>
+  </div>
+
+  <!-- 1° SEMESTRE -->
+  <div class="anabox" style="border-left-color:var(--p3)">
+    <h4>1° Semestre (9 agosto – 4 diciembre 2025) — 1,931 préstamos · 1,291 renovaciones</h4>
+    <p>El 1° Semestre es el periodo de mayor diversidad y volumen en colecciones. <strong>Religión continúa en primer lugar (296 préstamos)</strong>, pero la gran novedad es el ascenso de <strong>Anatomía humana al segundo lugar (147)</strong> — un salto respecto al 2° semestre (74) que refleja la entrada masiva de nuevos estudiantes de Ciencias de la Salud, principalmente Médico Cirujano y Cirujano Dentista. Embriología (76), Histología (71) y Fisiología (55) completan el bloque biomédico básico, confirmando que el 1° semestre es el periodo de mayor consumo de ciencias básicas de la salud.</p>
+    <p>Psicología (101) y Enfermería (100) mantienen volúmenes altos — las carreras de Psicología Clínica y Enfermería tienen su mayor inscripción en este ciclo. Arquitectura (87) y Derecho (87) reflejan la actividad de Artes y Comunicación y Ciencias Jurídicas con grupos completos.</p>
+    <p>En renovaciones, el patrón más relevante es el de <strong>Anatomía humana (100 renovaciones)</strong>, empatando prácticamente con Religión (123) y superando a Administración (102). Esto señala una escasez crítica de ejemplares en el área biomédica: los estudiantes de Ciencias de la Salud prolongan porque no consiguen nuevos ejemplares. Derecho (89), Embriología (75) e Histología (59) refuerzan esta interpretación — todas son áreas donde la colección parece insuficiente frente a la demanda del semestre más intenso del año.</p>
+  </div>
+
+  <div class="ins">
+    <div class="in"><div class="it">Religión: constante en todos los periodos</div><div class="ix">285 préstamos en 2° sem, 284 en verano, 296 en 1° sem. Es la única materia con demanda uniforme a lo largo del año, impulsada por la naturaleza confesional de la institución y los programas de Teología en todos los ciclos.</div></div>
+    <div class="in"><div class="it">Anatomía: se duplica en 1° semestre</div><div class="ix">De 74 a 147 préstamos — un incremento del 99% respecto al 2° semestre. Los ingresos nuevos de Médico Cirujano y Cirujano Dentista en agosto generan una demanda concentrada que supera la disponibilidad de ejemplares, elevando también las renovaciones a 100.</div></div>
+    <div class="in"><div class="it">Colección Infantil: protagonismo en verano</div><div class="ix">73 préstamos en verano vs. 45 en 2° sem y 31 en 1° sem. Los programas de educación concentran sus prácticas pedagógicas en el verano, requiriendo materiales de nivel básico para diseño de actividades y proyectos de lectura.</div></div>
+    <div class="in"><div class="it">Administración: alta renovación todo el año</div><div class="ix">Lidera en renovaciones en 2° sem (126) y verano (35), y queda en segundo lugar en 1° sem (102). Los textos de contabilidad y administración son de uso prolongado, lo que sugiere que la biblioteca debería incrementar ejemplares en esta área para reducir la tasa de renovación forzada.</div></div>
+  </div>
+</section>
+
+<!-- ══════════ ESCUELAS ══════════ -->
+<section id="sec-escuelas" class="sec">
+  <div class="sh"><h2>Escuelas y facultades</h2><span class="stag">Demanda por unidad académica</span></div>
+  <div class="card gf">
+    <div class="cl">Top 20 escuelas — transacciones totales</div>
+    <div class="ct">Ranking anual completo</div>
+    <div class="cw" style="height:680px"><canvas id="c-esc"></canvas></div>
+  </div>
+  <div class="card gf">
+    <div class="cl">Por facultad — comparativa préstamos vs. renovaciones</div>
+    <div class="ct">Anuales</div>
+    <div class="leg"><span><span class="ld" style="background:var(--a1)"></span>Préstamos</span><span><span class="ld" style="background:var(--a2)"></span>Renovaciones</span></div>
+    <div class="cw" style="height:340px"><canvas id="c-fcomp2"></canvas></div>
+  </div>
+</section>
+
+<!-- ══════════ HORARIOS ══════════ -->
+<section id="sec-horarios" class="sec">
+  <div class="sh"><h2>Horarios y días</h2><span class="stag">Patrones temporales por periodo académico</span></div>
+
+  <div class="kstrip">
+    <div class="kc"><div class="kl">Hora pico</div><div class="kn">12:00</div><div class="kd">683 transacciones año</div></div>
+    <div class="kc"><div class="kl">Franja más activa</div><div class="kn">9–11h</div><div class="kd">1,722 transacciones</div></div>
+    <div class="kc"><div class="kl">Día más activo</div><div class="kn">Martes</div><div class="kd">1,612 transacciones</div></div>
+    <div class="kc"><div class="kl">Fin de semana</div><div class="kn">864</div><div class="kd">12.2% del total anual</div></div>
+  </div>
+
+  <!-- HORA DEL DÍA ANUAL -->
+  <div class="card gf">
+    <div class="cl">Distribución por hora del día</div>
+    <div class="ct">Total de transacciones por hora — año 2025</div>
+    <div class="cw" style="height:270px"><canvas id="c-horas"></canvas></div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="cl">Por día de la semana — anual</div>
+      <div class="ct">Distribución semanal completa</div>
+      <div class="cw" style="height:250px"><canvas id="c-dias"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="cl">Franjas horarias agrupadas</div>
+      <div class="ct">Concentración de uso por franja</div>
+      <div class="cw" style="height:250px"><canvas id="c-franjas"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ANÁLISIS DETALLADO POR PERIODO -->
+  <div class="sh" style="margin-top:2.5rem"><h2>Análisis temporal detallado por periodo</h2><span class="stag">2° Semestre · Verano · 1° Semestre</span></div>
+
+  <!-- PATRONES POR MES -->
+  <div class="card gf">
+    <div class="cl">Transacciones por mes — todos los periodos</div>
+    <div class="ct">Volumen mensual coloreado por periodo académico</div>
+    <div class="cw" style="height:280px"><canvas id="c-comp-mes2"></canvas></div>
+  </div>
+
+  <!-- DÍAS POR PERIODO -->
+  <div class="card gf">
+    <div class="cl">Distribución por día de la semana — por periodo</div>
+    <div class="ct">Cómo varía el patrón semanal según el ciclo</div>
+    <div class="cw" style="height:300px"><canvas id="c-dias-per"></canvas></div>
+  </div>
+
+  <!-- ANÁLISIS TEMPORAL: 2° SEMESTRE -->
+  <div class="anabox" style="border-left-color:var(--p1)">
+    <h4>2° Semestre — Patrones temporales (ene – may 2025)</h4>
+    <p><strong>Por mes:</strong> Febrero es el mes más activo del periodo con <strong>801 transacciones</strong>, seguido de marzo (665) y abril (552). Enero (380) recoge solo los días 21–31, lo que infla artificialmente la aparente caída entre enero y febrero. Mayo solo incluye los primeros 16 días del mes (166 transacciones), por lo que el ritmo real es comparable a los meses previos.</p>
+    <p><strong>Por día de la semana:</strong> El patrón semanal sigue la curva típica de semestre presencial — <strong>martes lidera con 582 transacciones</strong>, seguido de miércoles (506) y lunes (499). El jueves es significativamente menor (345), posiblemente porque muchos alumnos y docentes concentran su carga académica en la primera mitad de la semana. El domingo registra 334 transacciones (13% del periodo), impulsado por renovaciones en plataforma y usuarios que preparan actividades para el lunes.</p>
+    <p><strong>Por hora:</strong> Las horas de máxima demanda de préstamos son <strong>19h (174), 18h (162), 17h (162) y 12h (196)</strong>. Esto indica dos picos: uno al mediodía (entre clases) y otro en la tarde-noche (después de clases). A diferencia de otros periodos, el 2° semestre muestra un uso más distribuido durante la jornada, con actividad sostenida desde las 9h hasta las 20h.</p>
+  </div>
+
+  <!-- ANÁLISIS TEMPORAL: VERANO -->
+  <div class="anabox" style="border-left-color:var(--p2)">
+    <h4>Verano — Patrones temporales (may – ago 2025)</h4>
+    <p><strong>Por mes:</strong> Junio concentra la mayor actividad con <strong>508 transacciones</strong>, seguido de julio (356). El fragmento de mayo (85, del 17 al 31) y agosto (88, del 1 al 8) marcan el inicio y cierre del periodo. La caída entre junio y julio refleja posibles recesos entre módulos de los programas intensivos de posgrado.</p>
+    <p><strong>Por día de la semana:</strong> El martes también lidera en verano (<strong>284 transacciones</strong>), pero con menor diferencia respecto al resto: lunes (237), miércoles (171), jueves (155). El domingo muestra 76 transacciones (7.3% del periodo), menor que en semestre, lo que sugiere que los posgradistas de verano realizan menos renovaciones remotas en fin de semana — posiblemente porque los módulos tienen plazos más cortos.</p>
+    <p><strong>Por hora:</strong> El patrón horario en verano es marcadamente diferente. <strong>Las 18h es la hora pico (119 préstamos)</strong>, seguida de 19h (103) y 17h (83). Esto refleja que los programas intensivos de posgrado se imparten en horario vespertino-nocturno, con los usuarios acudiendo a la biblioteca inmediatamente después de sus sesiones. La hora del mediodía (12h, 87) mantiene actividad, pero el peso relativo de la tarde-noche es mucho mayor que en semestre regular.</p>
+  </div>
+
+  <!-- ANÁLISIS TEMPORAL: 1° SEMESTRE -->
+  <div class="anabox" style="border-left-color:var(--p3)">
+    <h4>1° Semestre — Patrones temporales (ago – dic 2025)</h4>
+    <p><strong>Por mes:</strong> Septiembre es el mes más activo de todo el año con <strong>963 transacciones</strong>, seguido muy de cerca por octubre (888) — ambos meses concentran el 58.7% del periodo. Agosto (798) refleja el inicio del semestre con grupos ya activos desde la primera semana. Noviembre (522) muestra una caída asociada con exámenes parciales y proyectos finales que reducen las visitas presenciales. Diciembre (51) corresponde solo a los primeros 4 días del mes, periodo de cierre de actividades.</p>
+    <p><strong>Por día de la semana:</strong> Es el periodo con la distribución más equilibrada entre días hábiles. <strong>Martes (703) y miércoles (705)</strong> prácticamente empatan en el primer lugar, seguidos de jueves (561) y lunes (605). La alta actividad del jueves — que era el cuarto día en el 2° semestre — sugiere que el 1° semestre tiene más actividad académica distribuida uniformemente en la semana, posiblemente por la mayor variedad de carreras activas. El domingo (331) representa el 10.3% del periodo, mostrando uso sostenido de plataformas de renovación en fin de semana.</p>
+    <p><strong>Por hora:</strong> La hora de mayor préstamo es las <strong>12h (224)</strong>, seguida de 18h (207) y 17h (199). El patrón revela dos picos bien definidos: el mediodía (entre clases del bloque matutino y vespertino) y la tarde (17–19h, después del bloque vespertino). Las renovaciones en este periodo muestran actividad notable en horas nocturnas y madrugada (6–7h con 88 y 129 respectivamente), lo que corresponde a renovaciones automáticas del sistema o accesos remotos en horario extraoficial.</p>
+  </div>
+
+  <!-- GRÁFICAS DE HORA POR PERIODO -->
+  <div class="g3">
+    <div class="card">
+      <div class="cl">Préstamos por hora</div>
+      <div class="ct">2° Semestre</div>
+      <div class="cw" style="height:260px"><canvas id="c-h2s"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="cl">Préstamos por hora</div>
+      <div class="ct">Verano</div>
+      <div class="cw" style="height:260px"><canvas id="c-hv"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="cl">Préstamos por hora</div>
+      <div class="ct">1° Semestre</div>
+      <div class="cw" style="height:260px"><canvas id="c-h1s"></canvas></div>
+    </div>
+  </div>
+
+  <div class="g3">
+    <div class="card">
+      <div class="cl">Renovaciones por hora</div>
+      <div class="ct">2° Semestre</div>
+      <div class="cw" style="height:260px"><canvas id="c-r2s"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="cl">Renovaciones por hora</div>
+      <div class="ct">Verano</div>
+      <div class="cw" style="height:260px"><canvas id="c-rv"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="cl">Renovaciones por hora</div>
+      <div class="ct">1° Semestre</div>
+      <div class="cw" style="height:260px"><canvas id="c-r1s"></canvas></div>
+    </div>
+  </div>
+
+  <div class="ins">
+    <div class="in"><div class="it">Septiembre: mes más activo del año</div><div class="ix">963 transacciones — 13.6% del total anual. El inicio del 1° semestre concentra los nuevos ingresos, las listas de materiales del semestre y la demanda acumulada del verano. Es el mes de mayor presión sobre el acervo.</div></div>
+    <div class="in"><div class="it">Pico vespertino cambia según periodo</div><div class="ix">En semestre regular el pico de préstamos es a las 12h y 17–19h. En verano se desplaza completamente a 17–19h, reflejando que los posgradistas toman clases después del mediodía y visitan la biblioteca inmediatamente después.</div></div>
+    <div class="in"><div class="it">Martes: el día más activo en los 3 periodos</div><div class="ix">1,612 transacciones totales en martes — el primero en todos los periodos. El lunes y miércoles compiten por el segundo lugar dependiendo del ciclo. Esto sugiere que las listas de tareas y trabajos se concentran a inicio-mediados de semana.</div></div>
+    <div class="in"><div class="it">Renovaciones nocturnas: fenómeno del 1° semestre</div><div class="ix">El 1° semestre registra 88 renovaciones a las 6h y 129 a las 7h — actividad inusualmente alta para esa hora. Corresponde a usuarios que acceden al sistema de renovación remota antes de iniciar su jornada, aprovechando vencimientos inminentes.</div></div>
+  </div>
+</section>
+
+<!-- ══════════ METODOLOGÍA ══════════ -->
+<section id="sec-metodologia" class="sec">
+  <div class="sh"><h2>Metodología y cálculo de tasas</h2><span class="stag">Cómo se obtienen los indicadores</span></div>
+  <div class="metodo">
+    <h3>1. Fuente de datos y periodos</h3>
+    <p>El archivo <em>informe-2025.xlsx</em> contiene las hojas <strong>Préstamos+renovaciones-2025</strong> (7,061 registros), <strong>Préstamos</strong> (4,507) y <strong>Renovaciones</strong> (2,554). Cada fila tiene fecha y hora exacta, lo que permite segmentar con precisión por periodo. Las <strong>devoluciones</strong> son una operación separada cuyos totales fueron proporcionados directamente del registro operativo interno y no están en el archivo de transacciones.</p>
+    <p>Los cuatro periodos son: <strong>2° Semestre</strong> (21 ene – 16 may), <strong>Verano</strong> (17 may – 8 ago), <strong>1° Semestre</strong> (9 ago – 4 dic) y <strong>Vacacional invierno</strong> (5–31 dic). Hay 130 registros del 1 al 20 de enero que quedan fuera de todos los periodos y se contabilizan solo en el total anual.</p>
+  </div>
+  <div class="metodo">
+    <h3>2. Tasa de renovación</h3>
+    <p>La <strong>tasa de renovación</strong> indica qué proporción de las transacciones registradas en el sistema son prolongaciones de préstamos activos.</p>
+    <div class="formula">Tasa de renovación (%) = (Renovaciones del periodo ÷ Total transacciones del periodo) × 100</div>
+    <p>Una tasa alta (>35%) señala que la demanda supera la disponibilidad de ejemplares. El <strong>verano tiene la tasa más baja (20.3%)</strong> porque los programas intensivos implican ciclos cortos de préstamo y devolución, no prolongaciones.</p>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:.75rem">
+      <thead><tr style="border-bottom:1px solid var(--brd)">
+        <th style="text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:.4rem .75rem">Periodo</th>
+        <th style="text-align:right;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:.4rem .75rem">Renovaciones</th>
+        <th style="text-align:right;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:.4rem .75rem">Total tx</th>
+        <th style="text-align:right;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:.4rem .75rem">Tasa</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="padding:.45rem .75rem">2° Semestre</td><td style="text-align:right;font-family:'DM Mono',monospace;font-size:11px;padding:.45rem .75rem">983</td><td style="text-align:right;font-family:'DM Mono',monospace;font-size:11px;padding:.45rem .75rem">2,564</td><td style="text-align:right;font-weight:500;padding:.45rem .75rem">38.3%</td></tr>
+        <tr><td style="padding:.45rem .75rem">Verano</td><td style="text-align:right;font-family:'DM Mono',monospace;font-size:11px;padding:.45rem .75rem">211</td><td style="text-align:right;font-family:'DM Mono',monospace;font-size:11px;padding:.45rem .75rem">1,037</td><td style="text-align:right;font-weight:500;padding:.45rem .75rem;color:var(--a1)">20.3% ← mínimo</td></tr>
+        <tr><td style="padding:.45rem .75rem">1° Semestre</td><td style="text-align:right;font-family:'DM Mono',monospace;font-size:11px;padding:.45rem .75rem">1,291</td><td style="text-align:right;font-family:'DM Mono',monospace;font-size:11px;padding:.45rem .75rem">3,222</td><td style="text-align:right;font-weight:500;padding:.45rem .75rem;color:var(--a2)">40.1% ← máximo</td></tr>
+        <tr><td style="padding:.45rem .75rem">Vacacional</td><td style="text-align:right;font-family:'DM Mono',monospace;font-size:11px;padding:.45rem .75rem">43</td><td style="text-align:right;font-family:'DM Mono',monospace;font-size:11px;padding:.45rem .75rem">108</td><td style="text-align:right;font-weight:500;padding:.45rem .75rem">39.8%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="metodo">
+    <h3>3. Promedio diario</h3>
+    <p>El promedio diario usa los <strong>días atendidos operativos</strong>, no los días calendario del periodo.</p>
+    <div class="formula">Promedio diario de préstamos = Total préstamos del periodo ÷ Días atendidos (préstamos)</div>
+    <div class="formula">Promedio diario de renovaciones = Total renovaciones ÷ Días atendidos (renovaciones)</div>
+    <div class="formula">Promedio diario de devoluciones = Total devoluciones del periodo ÷ Días atendidos (préstamos)</div>
+  </div>
+  <div class="metodo">
+    <h3>4. Promedio de transacciones por usuario</h3>
+    <div class="formula">Promedio tx/usuario = Total transacciones del periodo ÷ Usuarios únicos (IDs distintos) del periodo</div>
+    <p>El promedio varía por periodo porque la composición del público cambia. El <strong>vacacional tiene el promedio más bajo (3.60)</strong> porque son solo 30 usuarios en modo de trabajo residual.</p>
+  </div>
+  <div class="metodo">
+    <h3>5. Devoluciones — qué mide y cómo interpretarla</h3>
+    <div class="formula">Ratio devoluciones/préstamos (%) = Devoluciones del periodo ÷ Préstamos del periodo × 100</div>
+    <p>Un ratio cercano al 100% indica gestión eficiente. El <strong>vacacional supera el 100% (156.9%)</strong> porque los usuarios devuelven materiales del semestre anterior. El verano queda en 92.5% porque algunos materiales prestados en ese periodo se devuelven ya iniciado el 1° semestre.</p>
+  </div>
+</section>
+
+<!-- ══════════ INFORME ══════════ -->
+<section id="sec-informe" class="sec">
+  <div class="sh"><h2>Informe narrativo</h2><span class="stag">Análisis integral 2025</span></div>
+  <div class="metodo">
+    <h3>Indicadores de gestión — resumen ejecutivo</h3>
+    <table class="ind-table">
+      <tr><td colspan="2" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:.3rem 1rem .6rem">TOTALES ANUALES</td></tr>
+      <tr><td>Préstamos</td><td>4,507</td></tr>
+      <tr><td>Renovaciones</td><td>2,554</td></tr>
+      <tr><td>Devoluciones</td><td>4,418 (ratio 98.0% vs préstamos)</td></tr>
+      <tr><td>Transacciones en sistema</td><td>7,061</td></tr>
+      <tr><td>Usuarios únicos (ID)</td><td>859</td></tr>
+      <tr><td>Promedio tx/usuario (anual)</td><td>8.22</td></tr>
+      <tr><td colspan="2" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:.6rem 1rem .4rem;border-top:1px solid var(--brd)">POR PERIODO</td></tr>
+      <tr><td>2° Semestre — Tx / Préstamos / Renov. / Devol.</td><td>2,564 / 1,581 / 983 / 1,606</td></tr>
+      <tr><td>Verano — Tx / Préstamos / Renov. / Devol.</td><td>1,037 / 826 / 211 / 764</td></tr>
+      <tr><td>1° Semestre — Tx / Préstamos / Renov. / Devol.</td><td>3,222 / 1,931 / 1,291 / 1,946</td></tr>
+      <tr><td>Vacacional — Tx / Préstamos / Renov. / Devol.</td><td>108 / 65 / 43 / 102</td></tr>
+      <tr><td colspan="2" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:.6rem 1rem .4rem;border-top:1px solid var(--brd)">COBERTURA</td></tr>
+      <tr><td>Total alumnos presenciales 2025</td><td>4,603</td></tr>
+      <tr><td>Cobertura biblioteca</td><td>18.66% (859 de 4,603)</td></tr>
+      <tr><td colspan="2" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:.6rem 1rem .4rem;border-top:1px solid var(--brd)">PROMEDIOS DIARIOS (1° Semestre)</td></tr>
+      <tr><td>Mayor prom. diario préstamos</td><td>1° Semestre — 19.91/día (97 días)</td></tr>
+      <tr><td>Mayor prom. diario renovaciones</td><td>1° Semestre — 11.23/día (115 días)</td></tr>
+      <tr><td>Mayor prom. diario devoluciones</td><td>1° Semestre — 20.06/día (97 días)</td></tr>
+      <tr><td colspan="2" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:.6rem 1rem .4rem;border-top:1px solid var(--brd)">TASAS</td></tr>
+      <tr><td>Mayor tasa de renovación</td><td>1° Semestre — 40.1%</td></tr>
+      <tr><td>Menor tasa de renovación</td><td>Verano — 20.3%</td></tr>
+      <tr><td>Tasa renovación anual</td><td>36.2%</td></tr>
+      <tr><td colspan="2" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:.6rem 1rem .4rem;border-top:1px solid var(--brd)">USUARIOS</td></tr>
+      <tr><td>Prom. docentes</td><td>10.24 préstamos/docente (85 únicos)</td></tr>
+      <tr><td>Prom. licenciatura</td><td>4.45 préstamos/alumno (617 únicos)</td></tr>
+      <tr><td colspan="2" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:.6rem 1rem .4rem;border-top:1px solid var(--brd)">COLECCIÓN Y HORARIOS</td></tr>
+      <tr><td>Mes más activo</td><td>Septiembre — 963 tx</td></tr>
+      <tr><td>Hora pico préstamos</td><td>12:00 — 683 tx totales año</td></tr>
+      <tr><td>Día más activo</td><td>Martes — 1,612 tx</td></tr>
+      <tr><td>Fin de semana (sáb+dom)</td><td>864 tx — 12.2% del año</td></tr>
+      <tr><td>Facultad mayor demanda</td><td>Ciencias de la Salud — 2,859</td></tr>
+      <tr><td>Título más circulado</td><td>Moore Anatomía — 133 (73P+60R)</td></tr>
+    </table>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<script>
+const C1='#2d5a3d',C2='#8b3a1a',C3='#1d3a5c',C4='#b8860b',C5='#5a3a6e',C6='#5a5450';
+const P1='#2d5a3d',P2='#1d3a5c',P3='#8b3a1a',P4='#5a3a6e';
+const PAL=[C1,C2,C3,C4,C5,C6,'#4a7c59','#a05c2a'];
+const GC='rgba(26,23,20,.07)',TC='#56514c';
+const CH={};
+
+function mk(id,cfg){
+  if(CH[id])CH[id].destroy();
+  const el=document.getElementById(id);if(!el)return;
+  CH[id]=new Chart(el,cfg);
+}
+
+function showTab(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nt').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  if(btn)btn.classList.add('active');
+  setTimeout(all,60);
+}
+
+function showPTab(id,btn,n){
+  document.querySelectorAll('.ptab-content').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.ptab').forEach(b=>{b.classList.remove('act1','act2','act3','act4');});
+  document.getElementById(id).classList.add('active');
+  if(btn)btn.classList.add('act'+n);
+}
+
+function all(){
+  const PL=['2° Semestre','Verano','1° Semestre','Vacacional'];
+  const PC=[P1,P2,P3,P4];
+
+  // PROMEDIOS DIARIOS
+  mk('c-pd',{type:'bar',data:{labels:PL,datasets:[{data:[16.64,11.47,19.91,null],backgroundColor:PC,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.raw} préstamos/día atendido`}}},scales:{x:{ticks:{color:TC},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+  mk('c-rd',{type:'bar',data:{labels:PL,datasets:[{data:[8.47,2.51,11.23,null],backgroundColor:PC,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.raw} renovaciones/día`}}},scales:{x:{ticks:{color:TC},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+  mk('c-dd',{type:'bar',data:{labels:PL,datasets:[{data:[16.91,10.61,20.06,null],backgroundColor:PC,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.raw} devoluciones/día`}}},scales:{x:{ticks:{color:TC},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  // TASAS
+  const tasas=[38.3,20.3,40.1,39.8];
+  mk('c-tasa',{type:'bar',data:{labels:PL,datasets:[{data:tasas,backgroundColor:tasas.map(v=>v>38?C2:v<25?C3:C4),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.raw}% son renovaciones`}}},scales:{x:{ticks:{color:TC},grid:{color:GC}},y:{max:50,ticks:{color:TC,callback:v=>v+'%'},grid:{color:GC}}}}});
+  mk('c-pusr',{type:'bar',data:{labels:PL,datasets:[{data:[6.28,6.17,6.06,3.60],backgroundColor:PC,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.raw} tx promedio/usuario`}}},scales:{x:{ticks:{color:TC},grid:{color:GC}},y:{min:0,max:8,ticks:{color:TC},grid:{color:GC}}}}});
+
+  // TRIPLE BAR
+  mk('c-triple-bar',{type:'bar',data:{labels:PL,datasets:[
+    {label:'Préstamos',data:[1581,826,1931,65],backgroundColor:C1,borderRadius:2},
+    {label:'Renovaciones',data:[983,211,1291,43],backgroundColor:C4,borderRadius:2},
+    {label:'Devoluciones',data:[1606,764,1946,102],backgroundColor:C2,borderRadius:2}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},color:TC,boxWidth:10,padding:8}}},scales:{x:{ticks:{color:TC},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  // COMP PR
+  mk('c-comp-pr',{type:'bar',data:{labels:PL,datasets:[
+    {label:'Préstamos %',data:[61.7,79.7,59.9,60.2],backgroundColor:PC,borderRadius:2},
+    {label:'Renovaciones %',data:[38.3,20.3,40.1,39.8],backgroundColor:PC.map(c=>c+'77'),borderRadius:2}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:9},color:TC,boxWidth:8,padding:6}}},scales:{x:{stacked:true,ticks:{color:TC},grid:{color:GC}},y:{stacked:true,max:100,ticks:{color:TC,callback:v=>v+'%'},grid:{color:GC}}}}});
+
+  // MESES
+  const MO=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  const TOT=[510,801,665,552,251,508,356,886,963,888,522,159];
+  const MC=[P4,P1,P1,P1,P1,P2,P2,P2,P3,P3,P3,P4];
+  mk('c-comp-mes',{type:'bar',data:{labels:MO,datasets:[{data:TOT,backgroundColor:MC,borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{title:([c])=>{const m={'Ene':'Vacacional→2°Sem','Feb':'2° Semestre','Mar':'2° Semestre','Abr':'2° Semestre','May':'2° Sem→Verano','Jun':'Verano','Jul':'Verano','Ago':'Verano→1°Sem','Sep':'1° Semestre','Oct':'1° Semestre','Nov':'1° Semestre','Dic':'1°Sem→Vacacional'};return `${c.label} — ${m[c.label]}`;},label:c=>`${c.raw.toLocaleString()} transacciones`}}},scales:{x:{ticks:{color:TC},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+  mk('c-comp-mes2',{type:'bar',data:{labels:MO,datasets:[{data:TOT,backgroundColor:MC,borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{title:([c])=>{const m={'Ene':'Vacacional→2°Sem','Feb':'2° Semestre','Mar':'2° Semestre','Abr':'2° Semestre','May':'2° Sem→Verano','Jun':'Verano','Jul':'Verano','Ago':'Verano→1°Sem','Sep':'1° Semestre','Oct':'1° Semestre','Nov':'1° Semestre','Dic':'1°Sem→Vacacional'};return `${c.label} — ${m[c.label]}`;},label:c=>`${c.raw.toLocaleString()} transacciones`}}},scales:{x:{ticks:{color:TC},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  // CAT PRÉSTAMOS POR PERIODO
+  mk('c-comp-cat',{type:'bar',data:{labels:['Licenciatura','Docentes','P. Apoyo','Posgrado','Preparatoria','Temporales'],datasets:[
+    {label:'2° Semestre',data:[1164,253,94,34,25,11],backgroundColor:P1,borderRadius:2},
+    {label:'Verano',data:[129,217,98,361,2,19],backgroundColor:P2,borderRadius:2},
+    {label:'1° Semestre',data:[1424,283,113,20,46,31],backgroundColor:P3,borderRadius:2},
+    {label:'Vacacional',data:[11,42,11,1,0,0],backgroundColor:P4,borderRadius:2}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},color:TC,boxWidth:10,padding:8}}},scales:{x:{ticks:{color:TC,font:{size:10}},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  // RENOVACIONES POR CATEGORÍA Y PERIODO
+  mk('c-renov-cat',{type:'bar',data:{labels:['Licenciatura','Docentes','P. Apoyo','Posgrado','Preparatoria','Carr. Técnicas'],datasets:[
+    {label:'2° Semestre',data:[695,211,58,15,2,2],backgroundColor:P1,borderRadius:2},
+    {label:'Verano',data:[2,117,57,35,0,0],backgroundColor:P2,borderRadius:2},
+    {label:'1° Semestre',data:[886,292,79,9,21,4],backgroundColor:P3,borderRadius:2},
+    {label:'Vacacional',data:[0,28,4,0,11,0],backgroundColor:P4,borderRadius:2}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},color:TC,boxWidth:10,padding:8}}},scales:{x:{ticks:{color:TC,font:{size:10}},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  // PROM LIBROS/USUARIO POR CATEGORÍA Y PERIODO
+  const catLabels2s=['Lic.','Docentes','P.Apoyo','Posgrado','Prepa','Técnicas'];
+  mk('c-avg-cat-2s',{type:'bar',data:{labels:catLabels2s,datasets:[{data:[3.68,5.75,5.22,3.40,2.78,1.83],backgroundColor:[C1,C2,C4,C3,C5,C6],borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:9}},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+  mk('c-avg-cat-v',{type:'bar',data:{labels:['Posgrado','Docentes','Temporales','P.Apoyo','Lic.','Prepa'],datasets:[{data:[5.39,5.17,4.75,4.90,4.30,2.00],backgroundColor:[C3,C2,C5,C4,C1,C6],borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:9}},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+  mk('c-avg-cat-1s',{type:'bar',data:{labels:['Temporales','Docentes','Posgrado','P.Apoyo','Prepa','Lic.','Técnicas'],datasets:[{data:[7.75,5.44,4.00,3.90,3.83,3.40,2.33],backgroundColor:[C5,C2,C3,C4,C6,C1,'#888'],borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:9}},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+  mk('c-avg-cat-vac',{type:'bar',data:{labels:['Docentes','Lic.','P.Apoyo','Posgrado'],datasets:[{data:[4.67,3.67,1.83,1.00],backgroundColor:[C2,C1,C4,C3],borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:10}},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  // ESCUELAS POR PERIODO
+  mk('c-esc-2s',{type:'bar',data:{labels:['Médico Cirujano','Teología','Ter. Física','Adm. Negocios','Arquitectura','Psicología','Q.Clínico Biol.','P.Apoyo','Cir. Dentista','Derecho'],datasets:[{data:[82,41,29,27,24,19,18,18,17,16],backgroundColor:P1,borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:9}},grid:{color:GC}},y:{ticks:{color:TC,font:{size:9}},grid:{display:false}}}}});
+  mk('c-esc-v',{type:'bar',data:{labels:['Mtría. Teol. Pastoral','Personal de Apoyo','Médico Cirujano','Doc. en Ministerio','Teología','Enfermería','Mtría. Teol. Sistemática','Contaduría','Mtría. Rel. Familiares','Prep. para el servicio'],datasets:[{data:[45,20,14,10,9,7,6,4,4,4],backgroundColor:P2,borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:9}},grid:{color:GC}},y:{ticks:{color:TC,font:{size:9}},grid:{display:false}}}}});
+  mk('c-esc-1s',{type:'bar',data:{labels:['Médico Cirujano','Teología','Cir. Dentista','P.Apoyo','Ter. Física','Enfermería','Psicología','Arquitectura','Derecho','Preparatoria'],datasets:[{data:[125,43,35,29,28,26,25,24,15,13],backgroundColor:P3,borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:9}},grid:{color:GC}},y:{ticks:{color:TC,font:{size:9}},grid:{display:false}}}}});
+  mk('c-esc-vac',{type:'bar',data:{labels:['P.Apoyo','Enfermería','Médico Cirujano','Ter. Física','Artes Visuales','Adm. Negocios'],datasets:[{data:[6,2,2,2,1,1],backgroundColor:P4,borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:9}},grid:{color:GC}},y:{ticks:{color:TC,font:{size:9}},grid:{display:false}}}}});
+
+  // FACULTADES POR PERIODO
+  mk('c-fper',{type:'bar',data:{labels:['Cs. Salud','Teología','Cs. Jurídicas','Artes y Com.','P. Apoyo'],datasets:[
+    {label:'2° Semestre',data:[607,201,218,170,94],backgroundColor:P1,borderRadius:2},
+    {label:'Verano',data:[174,362,64,46,98],backgroundColor:P2,borderRadius:2},
+    {label:'1° Semestre',data:[835,165,173,175,113],backgroundColor:P3,borderRadius:2},
+    {label:'Vacacional',data:[25,1,9,5,11],backgroundColor:P4,borderRadius:2}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},color:TC,boxWidth:10,padding:8}}},scales:{x:{ticks:{color:TC,font:{size:10},maxRotation:20},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  // RENOVACIONES POR FACULTAD Y PERIODO
+  mk('c-fper-renov',{type:'bar',data:{labels:['Cs. Salud','Cs. Jurídicas','Teología','Artes y Com.','P. Apoyo'],datasets:[
+    {label:'2° Semestre',data:[305,162,78,82,58],backgroundColor:P1,borderRadius:2},
+    {label:'Verano',data:[77,27,15,28,57],backgroundColor:P2,borderRadius:2},
+    {label:'1° Semestre',data:[770,155,86,81,22],backgroundColor:P3,borderRadius:2},
+    {label:'Vacacional',data:[29,0,0,0,4],backgroundColor:P4,borderRadius:2}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},color:TC,boxWidth:10,padding:8}}},scales:{x:{ticks:{color:TC,font:{size:10},maxRotation:20},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  mk('c-fcomp',{type:'bar',data:{labels:['Cs. Salud','Teología','Cs. Jurídicas','Artes y Com.','P. Apoyo','Cs. Educación','Cs. Estomatol.','Psicología','Ing. y Tecnol.','Preparatoria'],datasets:[{label:'Préstamos',data:[1678,729,489,405,326,222,211,177,80,94],backgroundColor:C1,borderRadius:2},{label:'Renovaciones',data:[1181,179,344,191,205,147,108,77,61,51],backgroundColor:C2,borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:10},maxRotation:30},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+  mk('c-fcomp2',{type:'bar',data:{labels:['Cs. Salud','Teología','Cs. Jurídicas','Artes y Com.','P. Apoyo','Cs. Educación','Cs. Estomatol.','Psicología','Ing. y Tecnol.','Preparatoria'],datasets:[{label:'Préstamos',data:[1678,729,489,405,326,222,211,177,80,94],backgroundColor:C1,borderRadius:2},{label:'Renovaciones',data:[1181,179,344,191,205,147,108,77,61,51],backgroundColor:C2,borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},color:TC,boxWidth:10,padding:8}}},scales:{x:{ticks:{color:TC,font:{size:10},maxRotation:30},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  // USUARIOS
+  mk('c-pcat',{type:'bar',data:{labels:['Docentes','Temporales','P. Apoyo','Posgrado','Licenciatura','Prepa','Técnicas'],datasets:[{data:[10.24,8.33,7.58,5.47,4.45,3.52,2.50],backgroundColor:[C2,C5,C4,C3,C1,C6,'#888'],borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.raw} libros prestados/usuario`}}},scales:{x:{ticks:{color:TC},grid:{color:GC}},y:{ticks:{color:TC,font:{size:10}},grid:{display:false}}}}});
+  mk('c-uuni',{type:'bar',data:{labels:['Licenciatura','Posgrado','Docentes','P. Apoyo','Prepa','Técnicas','Temporales'],datasets:[{data:[617,76,85,43,21,10,6],backgroundColor:PAL,borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  // COBERTURA
+  mk('c-cobertura',{type:'bar',data:{labels:['Ene–May (2° Sem)','Verano','Ago–Dic (1° Sem)'],datasets:[
+    {label:'Alumnos inscritos',data:[2171,177,2255],backgroundColor:[P1+'88',P2+'88',P3+'88'],borderRadius:2},
+    {label:'Usaron biblioteca',data:[403,164,527],backgroundColor:[P1,P2,P3],borderRadius:2}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},color:TC,boxWidth:10,padding:8}},tooltip:{callbacks:{afterLabel:(c)=>{const ins=[2171,177,2255];const pct=(c.raw/ins[c.dataIndex]*100).toFixed(1);return c.datasetIndex===1?`${pct}% de los inscritos`:'';}}}},scales:{x:{ticks:{color:TC},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  // USUARIOS POR PERIODO Y CATEGORÍA
+  mk('c-uper-cat',{type:'bar',data:{labels:['Lic.','Docentes','P.Apoyo','Posgrado','Prepa','Técnicas','Temporales'],datasets:[
+    {label:'2° Semestre',data:[316,44,18,10,9,6,0],backgroundColor:P1,borderRadius:2},
+    {label:'Verano',data:[30,42,20,67,1,0,4],backgroundColor:P2,borderRadius:2},
+    {label:'1° Semestre',data:[419,52,29,5,12,6,4],backgroundColor:P3,borderRadius:2},
+    {label:'Vacacional',data:[3,9,6,1,0,0,0],backgroundColor:P4,borderRadius:2}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},color:TC,boxWidth:10,padding:8}}},scales:{x:{ticks:{color:TC,font:{size:9}},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  // USUARIOS POR PERIODO Y FACULTAD
+  mk('c-uper-fac',{type:'bar',data:{labels:['Cs. Salud','Teología','Cs. Jurídicas','Artes y Com.','P. Apoyo','Cs. Educ.','Psicología'],datasets:[
+    {label:'2° Semestre',data:[148,42,55,41,18,17,27],backgroundColor:P1,borderRadius:2},
+    {label:'Verano',data:[30,70,10,7,20,7,6],backgroundColor:P2,borderRadius:2},
+    {label:'1° Semestre',data:[201,43,40,57,29,39,34],backgroundColor:P3,borderRadius:2},
+    {label:'Vacacional',data:[6,1,1,2,6,2,0],backgroundColor:P4,borderRadius:2}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},color:TC,boxWidth:10,padding:8}}},scales:{x:{ticks:{color:TC,font:{size:9}},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  // AVG LIBROS POR FACULTAD Y PERIODO
+  mk('c-avg-fac-per',{type:'bar',data:{labels:['Cs. Salud','Teología','Cs. Jurídicas','Artes y Com.','P. Apoyo','Cs. Educ.'],datasets:[
+    {label:'2° Semestre',data:[4.10,4.79,3.96,4.15,5.22,4.35],backgroundColor:P1,borderRadius:2},
+    {label:'Verano',data:[5.80,5.17,6.40,6.57,4.90,2.57],backgroundColor:P2,borderRadius:2},
+    {label:'1° Semestre',data:[4.15,3.84,4.32,3.07,3.90,2.82],backgroundColor:P3,borderRadius:2},
+    {label:'Vacacional',data:[4.17,1.00,9.00,2.50,1.83,4.50],backgroundColor:P4,borderRadius:2}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},color:TC,boxWidth:10,padding:8}}},scales:{x:{ticks:{color:TC,font:{size:9}},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  mk('c-ubeh',{type:'bar',data:{labels:['Solo prestaron (442)','Prestaron y renovaron (416)','Solo renovaron (1)'],datasets:[{data:[442,416,1],backgroundColor:[C1,C2,C4],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  // TEMAS
+  mk('c-tper',{type:'bar',data:{labels:['Religión','Adm. y Cont.','Psicología','Anatomía','Col. Infantil'],datasets:[
+    {label:'2° Semestre',data:[285,183,116,74,45],backgroundColor:P1,borderRadius:2},
+    {label:'Verano',data:[284,97,56,42,73],backgroundColor:P2,borderRadius:2},
+    {label:'1° Semestre',data:[296,118,101,147,31],backgroundColor:P3,borderRadius:2},
+    {label:'Vacacional',data:[5,12,4,7,0],backgroundColor:P4,borderRadius:2}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:9},color:TC,boxWidth:8,padding:5}}},scales:{x:{ticks:{color:TC,font:{size:9}},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  mk('c-tpres',{type:'bar',data:{labels:['Religión','Adm. y Contabilidad','Psicología','Anatomía humana','Enfermería','Arquitectura','Derecho','Col. Infantil','Literatura','Cs. Sociales','Fisiología','Histología','Artes','Bioquímica','Embriología'],datasets:[{data:[872,436,283,242,172,165,164,150,130,126,121,95,94,86,84],backgroundColor:C1,borderRadius:2}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:9}},grid:{color:GC}},y:{ticks:{color:TC,font:{size:9}},grid:{display:false}}}}});
+  mk('c-tren',{type:'bar',data:{labels:['Adm. y Contabilidad','Religión','Anatomía humana','Derecho','Psicología','Fisiología','Arquitectura','Enfermería','Embriología','Histología','Literatura','Col. Infantil','Bioquímica','Terapia física','Cs. Sociales'],datasets:[{data:[277,273,178,134,121,97,89,88,77,76,72,71,65,57,53],backgroundColor:C2,borderRadius:2}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:9}},grid:{color:GC}},y:{ticks:{color:TC,font:{size:9}},grid:{display:false}}}}});
+  mk('c-titulos',{type:'bar',data:{labels:['Moore anatomía c/ orient. clínica','Embriología humana y biol. desarrollo','Netter. Atlas de anatomía humana','Gray anatomía para estudiantes','Histología','Clasif. intervenciones enf. (NIC)','Hábitos atómicos','Histología Básica','Clasif. resultados enf. (NOC)','NANDA: diagnósticos enfermeros','Marks bioquímica médica básica','Murray. Microbiología médica','Guyton y Hall. Fisiología médica','Fisiología articular','Brunner y Suddarth Enf. Medicoquir.'],datasets:[{data:[73,64,44,44,38,36,32,29,27,25,25,25,24,23,22],backgroundColor:C3,borderRadius:2}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:9}},grid:{color:GC}},y:{ticks:{color:TC,font:{size:9}},grid:{display:false}}}}});
+
+  const td=[['Moore anatomía con orient. clínica',73,60,133],['Embriología humana y biol. del desarrollo',64,63,127],['Gray anatomía para estudiantes',44,37,81],['Netter. Atlas de anatomía humana',44,30,74],['Histología',38,26,64],['Histología Básica',29,24,53],['Clasif. intervenciones enf. (NIC)',36,17,53],['Guyton y Hall. Fisiología médica',24,24,48],['Marks bioquímica médica básica',25,17,42],['Hábitos atómicos',32,8,40],['Clasif. resultados enf. (NOC)',27,13,40],['NANDA: diagnósticos enfermeros',25,14,39],['Fisiología articular',23,16,39],['Microbiología y parasitología humana',20,17,37],['Murray. Microbiología médica básica',25,11,36]];
+  const ttb=document.getElementById('tb-tit');
+  if(ttb){ttb.innerHTML='';td.forEach((r,i)=>{const bdg=i===0?'g':i===1?'s':i===2?'b':'';const p=Math.round(r[1]/73*100);ttb.innerHTML+=`<tr><td><span class="rb ${bdg}">${i+1}</span></td><td style="font-size:12px">${r[0]}</td><td style="text-align:right;font-family:'DM Mono',monospace;font-size:11px;color:${C1}">${r[1]}</td><td style="text-align:right;font-family:'DM Mono',monospace;font-size:11px;color:${C2}">${r[2]}</td><td style="text-align:right;font-family:'DM Mono',monospace;font-size:12px;font-weight:500">${r[3]}</td><td><span class="bi" style="width:${p}%;background:${C3}44;border:1px solid ${C3};min-width:4px"></span></td></tr>`;})}
+
+  // ESCUELAS
+  mk('c-esc',{type:'bar',data:{labels:['Médico Cirujano','Ter. Física y Rehab.','Personal de Apoyo','Teología','Enfermería','Derecho','Adm. y Negocios','Cir. Dentista','Arquitectura','Mtría. Teología Pastoral','Químico Clínico Biol.','Contaduría Pública','Psicología Clínica','Preparatoria','Enseñanza Matemáticas','Diseño Comunicación Visual','Ing. Sistemas Comp.','Artes Visuales','Mtría. Salud Pública','Doc. en Ministerio'],datasets:[{data:[1483,543,531,529,454,340,304,275,273,255,229,170,148,145,139,135,106,101,99,90],backgroundColor:C1,borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:10}},grid:{color:GC}},y:{ticks:{color:TC,font:{size:9}},grid:{display:false}}}}});
+
+  // HORARIOS
+  const hD=[32,17,9,3,15,12,144,202,360,577,596,549,683,350,376,377,427,572,578,556,345,106,114,61];
+  mk('c-horas',{type:'bar',data:{labels:Array.from({length:24},(_,i)=>`${i}h`),datasets:[{data:hD,backgroundColor:hD.map(v=>v>=600?C2:v>=350?C4:C1+'99'),borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:9},autoSkip:false,maxRotation:0},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+  mk('c-dias',{type:'bar',data:{labels:['Martes','Miércoles','Lunes','Jueves','Domingo','Viernes','Sábado'],datasets:[{data:[1612,1435,1399,1073,757,678,107],backgroundColor:[C2,C1,C1,C1,C4,C3,C6],borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+  mk('c-franjas',{type:'doughnut',data:{labels:['Madrugada 0–5h (97)','Mañana temprana 6–8h (546)','Media mañana 9–11h (1,722)','Mediodía 12–13h (1,033)','Tarde 14–17h (1,557)','Tarde-noche 18–20h (1,479)','Noche 21–23h (281)'],datasets:[{data:[97,546,1722,1033,1557,1479,281],backgroundColor:[C6,C3+'bb',C3,C2,C1,C4,C6+'88'],borderWidth:2,borderColor:'#faf8f4'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'48%',plugins:{legend:{position:'bottom',labels:{font:{size:9},color:TC,boxWidth:10,padding:6}}}}});
+
+  // DÍAS POR PERIODO
+  mk('c-dias-per',{type:'bar',data:{labels:['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'],datasets:[
+    {label:'2° Semestre',data:[499,582,506,345,272,26,334],backgroundColor:P1,borderRadius:2},
+    {label:'Verano',data:[237,284,171,155,102,12,76],backgroundColor:P2,borderRadius:2},
+    {label:'1° Semestre',data:[605,703,705,561,260,57,331],backgroundColor:P3,borderRadius:2}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},color:TC,boxWidth:10,padding:8}}},scales:{x:{ticks:{color:TC},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  // HORAS PRÉSTAMOS POR PERIODO
+  const horas=Array.from({length:24},(_,i)=>i+'h');
+  // 2° Semestre (8h-20h activos)
+  mk('c-h2s',{type:'bar',data:{labels:horas,datasets:[{data:[0,0,0,0,0,0,0,0,40,120,135,152,196,74,66,100,118,162,162,174,82,0,0,0],backgroundColor:h=>h.raw>150?P1:P1+'88',borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:8},autoSkip:true,maxRotation:0},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+  mk('c-hv',{type:'bar',data:{labels:horas,datasets:[{data:[0,0,0,0,0,0,0,0,22,42,67,80,87,30,44,37,50,83,119,103,62,0,0,0],backgroundColor:h=>h.raw>100?P2:P2+'88',borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:8},autoSkip:true,maxRotation:0},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+  mk('c-h1s',{type:'bar',data:{labels:horas,datasets:[{data:[0,0,0,0,0,0,0,2,73,118,176,146,224,104,95,150,148,199,207,181,108,0,0,0],backgroundColor:h=>h.raw>180?P3:P3+'88',borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:8},autoSkip:true,maxRotation:0},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+
+  // HORAS RENOVACIONES POR PERIODO
+  mk('c-r2s',{type:'bar',data:{labels:horas,datasets:[{data:[28,15,5,0,1,11,53,40,84,92,68,46,56,49,62,29,41,46,48,51,50,53,35,20],backgroundColor:P1+'aa',borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:8},autoSkip:true,maxRotation:0},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+  mk('c-rv',{type:'bar',data:{labels:horas,datasets:[{data:[0,0,0,0,0,0,3,30,38,34,13,2,4,9,15,0,5,19,2,8,10,9,7,3],backgroundColor:P2+'aa',borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:8},autoSkip:true,maxRotation:0},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+  mk('c-r1s',{type:'bar',data:{labels:horas,datasets:[{data:[4,0,4,3,14,1,88,129,91,152,81,87,93,73,78,48,43,50,34,38,31,44,67,38],backgroundColor:P3+'aa',borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC,font:{size:8},autoSkip:true,maxRotation:0},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+}
+
+window.addEventListener('DOMContentLoaded',()=>setTimeout(all,120));
+</script>
+</body>
+</html>
