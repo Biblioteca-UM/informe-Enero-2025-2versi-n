@@ -635,11 +635,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);font
   <div class="kstrip">
     <div class="kc"><div class="kl">Usuarios únicos año</div><div class="kn">859</div><div class="kd">IDs distintos en préstamos</div></div>
     <div class="kc"><div class="kl">Prom. anual tx/usuario</div><div class="kn">8.22</div><div class="kd">Incluye préstamos + renov.</div></div>
-    <div class="kc"><div class="kl">Prom. libros docentes</div><div class="kn">10.24</div><div class="kd">85 docentes únicos</div></div>
+    <div class="kc"><div class="kl">Prom. libros docentes</div><div class="kn">10.24</div><div class="kd">86 docentes únicos*</div></div>
     <div class="kc"><div class="kl">Prom. libros licenciatura</div><div class="kn">4.45</div><div class="kd">617 alumnos únicos</div></div>
     <div class="kc"><div class="kl">Prom. libros posgrado</div><div class="kn">5.47</div><div class="kd">76 alumnos únicos</div></div>
     <div class="kc"><div class="kl">Prom. libros p. apoyo</div><div class="kn">7.58</div><div class="kd">43 personas únicas</div></div>
   </div>
+
+  <p style="font-size:11px;color:var(--ink3);margin-bottom:1.5rem">* De los 86 docentes únicos, 85 realizaron al menos un préstamo y 1 (ID 9801132, Escuela de Música) únicamente renovó materiales en 2025 sin registrar préstamos nuevos. El promedio de 10.24 libros/docente se calcula sobre los 85 que sí prestaron (870 préstamos ÷ 85).</p>
 
   <div class="g2">
     <div class="card">
@@ -1053,7 +1055,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);font
       <tr><td>Menor tasa de renovación</td><td>Verano — 20.3%</td></tr>
       <tr><td>Tasa renovación anual</td><td>36.2%</td></tr>
       <tr><td colspan="2" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:.6rem 1rem .4rem;border-top:1px solid var(--brd)">USUARIOS</td></tr>
-      <tr><td>Prom. docentes</td><td>10.24 préstamos/docente (85 únicos)</td></tr>
+      <tr><td>Prom. docentes</td><td>10.24 préstamos/docente (86 únicos; 85 con préstamo, 1 solo renovaciones)</td></tr>
       <tr><td>Prom. licenciatura</td><td>4.45 préstamos/alumno (617 únicos)</td></tr>
       <tr><td colspan="2" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:.6rem 1rem .4rem;border-top:1px solid var(--brd)">COLECCIÓN Y HORARIOS</td></tr>
       <tr><td>Mes más activo</td><td>Septiembre — 963 tx</td></tr>
@@ -1180,7 +1182,7 @@ function all(){
 
   // USUARIOS
   mk('c-pcat',{type:'bar',data:{labels:['Docentes','Temporales','P. Apoyo','Posgrado','Licenciatura','Prepa','Técnicas'],datasets:[{data:[10.24,8.33,7.58,5.47,4.45,3.52,2.50],backgroundColor:[C2,C5,C4,C3,C1,C6,'#888'],borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.raw} libros prestados/usuario`}}},scales:{x:{ticks:{color:TC},grid:{color:GC}},y:{ticks:{color:TC,font:{size:10}},grid:{display:false}}}}});
-  mk('c-uuni',{type:'bar',data:{labels:['Licenciatura','Posgrado','Docentes','P. Apoyo','Prepa','Técnicas','Temporales'],datasets:[{data:[617,76,85,43,21,10,6],backgroundColor:PAL,borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
+  mk('c-uuni',{type:'bar',data:{labels:['Licenciatura','Posgrado','Docentes','P. Apoyo','Prepa','Técnicas','Temporales'],datasets:[{data:[617,76,86,43,21,10,6],backgroundColor:PAL,borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:TC},grid:{color:GC}},y:{ticks:{color:TC},grid:{color:GC}}}}});
 
   // COBERTURA
   mk('c-cobertura',{type:'bar',data:{labels:['Ene–May (2° Sem)','Verano','Ago–Dic (1° Sem)'],datasets:[
